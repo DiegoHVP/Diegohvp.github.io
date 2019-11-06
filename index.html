@@ -4,8 +4,9 @@
 </head>
     <body>
         <script>
-   
-function preload() {
+   //Outros
+var player = down[1]
+var bg = loadImage('/ceneraio (1).png')
 //MENU
 var xo = 365, yo = 455, cena = 1, aux
 //COR MENU RGB
@@ -14,6 +15,8 @@ var L = 10, S = 100, D = 200
 var x = 30, y = 500, aux = 1, cena = 1;
 //Sprites
 var down = [], up = [], rl = []
+
+function preload() {
 down[0] = loadImage('/pl/down01.png')
 down[1] = loadImage('/pl/down02.png')
 down[2] = loadImage('/pl/down00.png')
@@ -25,13 +28,9 @@ up[2] = loadImage('/pl/up00.png')
 rl[0] = loadImage('/pl/rl01.png')
 rl[1] = loadImage('/pl/rl02.png')
 rl[2] = loadImage('/pl/rl00.png')
-//Outros
-var player = down[1]
-var bg = loadImage('/ceneraio (1).png')
 }
 
-function setup() {
-  
+function setup() {  
   createCanvas(900, 580)
 }
 
