@@ -2,18 +2,37 @@
   <head>
     <script src="https://github.com/processing/p5.js/releases/download/0.5.16/p5.js"></script>
     <script src="sketch.js"></script>
-  </head>
+</head>
     <body>
         <script>
-        //MENU
+   
+function preload() {
+//MENU
 var xo = 365, yo = 455
-//COR RGB
+//COR MENU RGB
 var L = 10, S = 100, D = 200
 //Posicao player
 var x = 30, y = 500, aux = 1, cena = 1;
+//Sprites
+var down = [], up = [], rl = []
+down[0] = loadImage('/pl/down01.png')
+down[1] = loadImage('/pl/down02.png')
+down[2] = loadImage('/pl/down00.png')
+
+up[0] = loadImage('/pl/up01.png')
+up[1] = loadImage('/pl/up02.png')
+up[2] = loadImage('/pl/up00.png')
+
+rl[0] = loadImage('/pl/rl01.png')
+rl[1] = loadImage('/pl/rl02.png')
+rl[2] = loadImage('/pl/rl00.png')
+//Outros
+var player = down[1]
+var bg = loadImage('/ceneraio.png')
+}
 
 function setup() {
-  bg = loadImage('/ceneraio.png')
+  
   createCanvas(900, 580)
 }
 
@@ -136,7 +155,7 @@ function fase1() {
   stroke(0)
 
 //PLAYER
-  image(https://diegohvp.github.io/down00.png, x, y, 30, 40)
+  image(player, x, y, 130, 40)
 
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
