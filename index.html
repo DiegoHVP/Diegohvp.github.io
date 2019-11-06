@@ -8,7 +8,7 @@
    //Outros
 
 var bg
-bg = loadImage('/ceneraio%20(1).png')
+
 //MENU
 var xo = 365, yo = 455, cena = 1, aux
 //COR MENU RGB
@@ -19,7 +19,12 @@ var x = 30, y = 500, aux = 1, cena = 1;
 var down = [], up = [], rl = []
 var player
 function preload() {
-    down[0] = loadImage('/pl/down01.png')
+    
+}
+
+function setup() {  
+  createCanvas(900, 580)
+  bg = loadImage('/ceneraio%20(1).png')down[0] = loadImage('/pl/down01.png')
     down[1] = loadImage('/pl/down02.png')
     down[2] = loadImage('/pl/down00.png')
 
@@ -31,10 +36,6 @@ function preload() {
     rl[1] = loadImage('/pl/rl02.png')
     rl[2] = loadImage('/pl/rl00.png')
     player = down[1]
-}
-
-function setup() {  
-  createCanvas(900, 580)
 }
 
 function draw() {
