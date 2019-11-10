@@ -84,7 +84,7 @@ function menu() {
   textSize(12);
   
   text('~', 670, 215)
-  text('A vida nunca foi tao emocionante.', 548, 220);
+  text('A vida nunca foi tão emocionante.', 548, 220);
   textSize(32)
   stroke(0)
   text('Jogar', 390, 355);
