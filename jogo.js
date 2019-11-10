@@ -1,4 +1,3 @@
-function preload() {
   //Outros
     var bg, player
   //MENU
@@ -9,7 +8,6 @@ function preload() {
     var x = 30, y = 500, aux = 1, cena = 1;
   //Sprites
     var down = [], up = [], rl = []
-}
 
 function setup() {  
     createCanvas(900, 580);
