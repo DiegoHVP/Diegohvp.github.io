@@ -83,7 +83,7 @@ function menu() {
   text('ENTREGADOR DE MERCADORIAS', 200, 200)
   textSize(12);
   
-  text('~', 640, 215)
+  text('~', 670, 215)
   text('A vida nunca foi tao emocionante.', 548, 220);
   textSize(32)
   stroke(0)
