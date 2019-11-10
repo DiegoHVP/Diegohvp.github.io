@@ -1,17 +1,17 @@
   //Outros
-    var bg, player
+    var bg, player;
   //MENU
-    var xo = 365, yo = 455, cena = 1, aux
+    var xo = 365, yo = 455, cena = 1, aux;
   //COR MENU RGB
-    var L = 10, S = 100, D = 200
+    var L = 10, S = 100, D = 200;
   //Posicao player
     var x = 30, y = 500, aux = 1, cena = 1;
   //Sprites
-    var down = [], up = [], rl = []
+    var down = [], up = [], rl = [];
 
 function setup() {  
     createCanvas(900, 580);
-    bg = loadImage('/ceneraio%20(1).png');
+    bg = loadImage('/ceneraio (1).png');
     down[0] = loadImage('/pl/down01.png');
     down[1] = loadImage('/pl/down02.png');
     down[2] = loadImage('/pl/down00.png');
