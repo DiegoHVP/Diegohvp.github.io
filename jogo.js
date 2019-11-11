@@ -89,11 +89,15 @@ function menu() {
   text('Jogar', 390, 355);
   text('Regras', 380, 425);
   text('Sobre', 386, 498);
+  textSize(12)
+  text('X: '+mouseX,3 0, 30)
+  text('Y: '+mouseY, 30, 45)
 
   noFill();
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65);
+  
 }
 
 function keyPressed() {
