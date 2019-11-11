@@ -150,7 +150,7 @@ function fase1() {
   fill(255)
   stroke(0)
 
-  image(player, x, y, 30, 140)
+  image(player, x, y, 45, 120)
 
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
