@@ -1,22 +1,15 @@
 //MENU
-var xo = 365,
-  yo = 315,
+var xo = 365,yo = 315;
 //COR MENU RGB
-var L = 10,
-  S = 100,
-  D = 200;
+var L = 10, S = 100, D = 200;
 //Posicao player
-var x = 30,
-  y = 450
+var x = 30, y = 450;
 //TELA
-var cena = 0,
-  aux = 1;
+var cena = 0, aux = 1;
 //Sprites
-var down = [],
-  up = [],
-  rl = [];
+var down = [], up = [], rl = [];
 //Outros
-var bg, player, countframe = 0, FR = 0
+var bg, player, countframe = 0, FR = 0;
 
 function preload() {
   //SPRITES
@@ -66,10 +59,10 @@ function draw() {
   //O 'FR' EA VARIACAO DOS FRAMES
   countframe++
   if (countframe>15) {
-    countframe=0
+    countframe=0;
     FR++
     if (FR>2) {
-      FR=0
+      FR=0;
   }
 }
 }
@@ -95,11 +88,11 @@ function menu() {
   S++
   D++
   if (L >= 255)
-    L = random(0, 255)
+    L = random(0, 255);
   if (S >= 255)
-    S = random(0, 255)
+    S = random(0, 255);
   if (D >= 255)
-    D = random(0, 255)
+    D = random(0, 255);
   background(L, S, D);
   fill('white');
   stroke('black');
@@ -110,18 +103,18 @@ function menu() {
 
   textSize(32);
   fill('black');
-  stroke(255)
-  text('ENTREGADOR DE MERCADORIAS', 200, 200)
+  stroke(255);
+  text('ENTREGADOR DE MERCADORIAS', 200, 200);
   textSize(12);
   text('A vida nunca foi tão emocionante.', 548, 220);
-  textSize(32)
-  stroke(0)
+  textSize(32);
+  stroke(0);
   text('Jogar', 390, 355);
   text('Regras', 380, 425);
   text('Sobre', 386, 498);
-  textSize(12)
-  text('X: ' + mouseX, 30, 40)
-  text('Y: ' + mouseY, 30, 55)
+  textSize(12);
+  text('X: ' + mouseX, 30, 40);
+  text('Y: ' + mouseY, 30, 55);
 
   noFill();
   strokeWeight(5)
@@ -136,40 +129,40 @@ function keyPressed() {
     cena = aux;
   if (keyCode === DOWN_ARROW) {
     if (yo >= 315 && yo < 455) 
-      yo += 70
+      yo += 70;
   }
   if (keyCode === UP_ARROW) {
     if (yo > 315 && yo <= 455)
-      yo -= 70
+      yo -= 70;
   }
   if (yo==385)
-    aux=2
+    aux=2;
   if (yo==315)
-    aux=1
+    aux=1;
   if (yo==455)
-    aux=3
+    aux=3;
   
 }
 
 
 function sobre() {
-  background(80, 80, 200)
-  textSize(32)
-  text('REGRAS DO JOGO', 300, 40)
-  textSize(15)
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão', 100, 80)
-  text('usando sua habilidade de matemática. Enfrentado problemas de', 80, 100)
-  text('soma é frações.', 80, 120)
+  background(80, 80, 200);
+  textSize(32);
+  text('REGRAS DO JOGO', 300, 40);
+  textSize(15);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão', 100, 80);
+  text('usando sua habilidade de matemática. Enfrentado problemas de', 80, 100);
+  text('soma é frações.', 80, 120);
 
 }
 
 function fase1() {
-  background(bg)
-  strokeWeight(2)
-  fill(255)
-  stroke(0)
+  background(bg;
+  strokeWeight(2);
+  fill(255);
+  stroke(0);
 
-  image(player, x, y, 80, 150)
+  image(player, x, y, 80, 150);
 
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
@@ -177,15 +170,15 @@ function fase1() {
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
-    player = rl[FR]
+    player = rl[FR];
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
     y -= 5;
-    player = up[FR]
+    player = up[FR];
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
     y += 5;
-    player = down[FR]
+    player = down[FR];
   }
 }
 
