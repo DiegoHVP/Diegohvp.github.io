@@ -2,7 +2,7 @@
 var bg, player, countframe, FR
 //MENU
 var xo = 365,
-  yo = 455,
+  yo = 315,
   cena = 1,
   aux = 1;
 //COR MENU RGB
@@ -20,23 +20,23 @@ var down = [],
   rl = [];
 
 function preload() {
-  down[0] = loadImage('/pl/down01.png');
-  down[1] = loadImage('/pl/down02.png');
-  down[2] = loadImage('/pl/down00.png');
+  down[0] = loadImage('https://diegohvp.github.io/pl/down01.png');
+  down[1] = loadImage('https://diegohvp.github.io/pl/down02.png');
+  down[2] = loadImage('https://diegohvp.github.io/pl/down00.png');
 
-  up[0] = loadImage('/pl/up01.png');
-  up[1] = loadImage('/pl/up02.png');
-  up[2] = loadImage('/pl/up00.png');
+  up[0] = loadImage('https://diegohvp.github.io/pl/up01.png');
+  up[1] = loadImage('https://diegohvp.github.io/pl/up02.png');
+  up[2] = loadImage('https://diegohvp.github.io/pl/up00.png');
 
-  rl[0] = loadImage('/pl/rl01.png');
-  rl[1] = loadImage('/pl/rl02.png');
-  rl[2] = loadImage('/pl/rl00.png');
+  rl[0] = loadImage('https://diegohvp.github.io/pl/rl01.png');
+  rl[1] = loadImage('https://diegohvp.github.io/pl/rl02.png');
+  rl[2] = loadImage('https://diegohvp.github.io/pl/rl00.png');
   player = down[1];
 }
 
 function setup() {
   createCanvas(900, 580);
-  bg = loadImage('/ceneraio (1).png');
+  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
 
 }
 
@@ -55,7 +55,6 @@ function draw() {
       menu()
       break;
   }
-
 }
 
 
@@ -111,6 +110,7 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30);
+console.log(yo+' '+aux)
 
 
 }
@@ -118,20 +118,21 @@ function menu() {
 function keyPressed() {
   if (keyCode === ENTER)
     cena = aux;
-  if (keyCode === DOWN_ARROW)
+  if (keyCode === DOWN_ARROW) {
     if (yo >= 315 && yo < 455) 
       yo += 70
-  if (keyCode === UP_ARROW)
+  }
+  if (keyCode === UP_ARROW) {
     if (yo > 315 && yo <= 455)
       yo -= 70
+  }
   if (yo==385)
     aux=2
-  else
-    if (yo==315)
-      aux=1
-  else
-    if (yo==455)
-      aux==3
+  if (yo==315)
+    aux=1
+  if (yo==455)
+    aux=3
+  
 }
 
 
@@ -157,7 +158,6 @@ function fase1() {
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
-
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
