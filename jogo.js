@@ -89,15 +89,14 @@ function menu() {
   text('Jogar', 390, 355);
   text('Regras', 380, 425);
   text('Sobre', 386, 498);
-
+  text(mouseX, 30,40)
+  text(mouseY, 30,55)
 
   noFill();
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65);
-  fill(0)
-  text(mouseX, 30,40)
-  text(mouseY, 30,55)
+
 
   
 }
