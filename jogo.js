@@ -157,7 +157,7 @@ function sobre() {
 }
 
 function fase1() {
-  background(bg;
+  background(bg);
   strokeWeight(2);
   fill(255);
   stroke(0);
