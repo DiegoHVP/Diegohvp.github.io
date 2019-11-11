@@ -1,5 +1,5 @@
 //Outros
-var bg, player, countframe, FR
+var bg, player, countframe = 0, FR = 0
 //MENU
 var xo = 365,
   yo = 315,
@@ -13,7 +13,7 @@ var L = 10,
 var x = 30,
   y = 450,
   aux = 1,
-  cena = 1;
+  cena = 0;
 //Sprites
 var down = [],
   up = [],
@@ -42,19 +42,30 @@ function setup() {
 
 function draw() {
   switch (cena) {
-    case 1:
+    case 0:
       menu();
       break;
-    case 2:
+    case 1:
       fase1();
+      break;
+    case 2:
+      regras();
       break;
     case 3:
-      fase1();
-      break;
+      sobre()
+    break;
     default:
       menu()
       break;
   }
+  countframe++
+  if (countframe>15) {
+    countframe=0
+    FR++
+    if (FR>2) {
+      FR=0
+  }
+}
 }
 
 
@@ -110,7 +121,6 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30);
-console.log(yo+' '+aux)
 
 
 }
@@ -158,15 +168,19 @@ function fase1() {
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
+
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
+    player = rl[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 450) {
     y -= 5;
+    player = up[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 540) {
     y += 5;
+    player = down[FR]
   }
 }
 
