@@ -70,6 +70,9 @@ function menu() {
   if (D >= 255)
     D = random(0, 255)
   background(L, S, D);
+  fill(0);
+  text(mouseX, 30, 40);
+  text(mouseY, 30, 55);
   fill('white');
   stroke('black');
   strokeWeight(1);
@@ -95,9 +98,7 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65);
-  fill(0)
-  text(mouseX, 30,40)
-  text(mouseY, 30, 55)
+
   
 }
 
