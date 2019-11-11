@@ -13,24 +13,24 @@ var bg, player, countframe = 0, FR = 0;
 
 function preload() {
   //SPRITES
-  down[0] = loadImage('https://diegohvp.github.io/pl/down01.png');
-  down[1] = loadImage('https://diegohvp.github.io/pl/down02.png');
-  down[2] = loadImage('https://diegohvp.github.io/pl/down00.png');
+  down[0] = loadImage('/pl/down01.png');
+  down[1] = loadImage('/pl/down02.png');
+  down[2] = loadImage('/pl/down00.png');
 
-  up[0] = loadImage('https://diegohvp.github.io/pl/up01.png');
-  up[1] = loadImage('https://diegohvp.github.io/pl/up02.png');
-  up[2] = loadImage('https://diegohvp.github.io/pl/up00.png');
+  up[0] = loadImage('/pl/up01.png');
+  up[1] = loadImage('/pl/up02.png');
+  up[2] = loadImage('/pl/up00.png');
 
-  rl[0] = loadImage('https://diegohvp.github.io/pl/rl01.png');
-  rl[1] = loadImage('https://diegohvp.github.io/pl/rl02.png');
-  rl[2] = loadImage('https://diegohvp.github.io/pl/rl00.png');
+  rl[0] = loadImage('/pl/rl01.png');
+  rl[1] = loadImage('/pl/rl02.png');
+  rl[2] = loadImage('/pl/rl00.png');
   player = down[1];
 }
 
 function setup() {
   createCanvas(900, 580);
   //FUNDO
-  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
+  bg = loadImage('/ceneraio (1).png');
 
 }
 
