@@ -80,7 +80,7 @@ function regras() {
   textSize(28);
   fill('black');
 
-  text('Aqui vao as regras', 40, 55);
+  text('VAI TER ALGUMA COISA AQUI, EU ACHO...', 40, 55);
 }
 
 function menu() {
@@ -148,7 +148,7 @@ function keyPressed() {
 function sobre() {
   background(80, 80, 200);
   textSize(32);
-  text('REGRAS DO JOGO', 300, 40);
+  text('OBJETIVO DO JOGO', 300, 40);
   textSize(15);
   text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão', 100, 80);
   text('usando sua habilidade de matemática. Enfrentado problemas de', 80, 100);
