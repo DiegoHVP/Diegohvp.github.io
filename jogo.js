@@ -1,23 +1,22 @@
-//Outros
-var bg, player, countframe = 0, FR = 0
 //MENU
 var xo = 365,
   yo = 315,
-  cena = 1,
-  aux = 1;
 //COR MENU RGB
 var L = 10,
   S = 100,
   D = 200;
 //Posicao player
 var x = 30,
-  y = 450,
-  aux = 1,
-  cena = 0;
+  y = 450
+//TELA
+var cena = 0,
+  aux = 1;
 //Sprites
 var down = [],
   up = [],
   rl = [];
+//Outros
+var bg, player, countframe = 0, FR = 0
 
 function preload() {
   //SPRITES
