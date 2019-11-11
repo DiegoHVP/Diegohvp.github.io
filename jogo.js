@@ -8,10 +8,7 @@
     var x = 30, y = 450, aux = 1, cena = 1;
   //Sprites
     var down = [], up = [], rl = [];
-
-function setup() {  
-    createCanvas(900, 580);
-    bg = loadImage('/ceneraio (1).png');
+function preload() {
     down[0] = loadImage('/pl/down01.png');
     down[1] = loadImage('/pl/down02.png');
     down[2] = loadImage('/pl/down00.png');
@@ -23,7 +20,13 @@ function setup() {
     rl[0] = loadImage('/pl/rl01.png');
     rl[1] = loadImage('/pl/rl02.png');
     rl[2] = loadImage('/pl/rl00.png');
-    player = down[1];
+    player = down[1]; 
+}
+
+function setup() {  
+    createCanvas(900, 580);
+    bg = loadImage('/ceneraio (1).png');
+
 }
 
 function draw() {
@@ -41,16 +44,16 @@ function draw() {
         menu()
       break;
     }
-  for (let countframe = 0, FR = 0;countframe<61;countframe++) {
+        var countframe = 0, FR = 0
+        countframe++
         if (countframe==60) {
             countframe = (countframe/60)-1
         }
-        if (countframe/30==3);
+        if (countframe/30==1);
             FR++
         if (FR>2) {
             FR=0
         }
-  }
 }
 
 
@@ -105,42 +108,32 @@ function menu() {
   noFill();
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(xo, yo, 130, 65);
+  rect(xo, yo, 130, 65, 30);
 
 
   
 }
 
 function keyPressed() {
-
-  if (cena == 2 || cena == 3)
-    cena = 1;
-
-  if (keyCode === ENTER)
+if (keyCode === ENTER)
     cena = aux;
-
-  if (keyCode === DOWN_ARROW) {
-    if (yo < 450) {
-      yo += 70;
-      if (aux == 1)
-        aux = 2;
-      else
-      if (aux == 2)
-        aux = 3;
-    }
-
-  } else if (keyCode === UP_ARROW) {
-    if (yo > 380) {
-      yo -= 70;
-      if (aux == 2) {
-        aux = 1;
-      } else {
-        if (aux == 3) {
-          aux = 2;
-        }
+if (keyCode === DOWN_ARROW) {
+    if (yo < 480) {
+      yo+=70
+      aux++
+      if (aux>=3) {
+        aux = 3
       }
-    }
-
+    } else {
+         if (keyCode === UP_ARROW) {
+            if (yo > 200) {
+              yo-=70
+              if (aux<=1) {
+                aux=1
+              }
+            }
+         }
+         }
   }
 }
 function sobre() {
