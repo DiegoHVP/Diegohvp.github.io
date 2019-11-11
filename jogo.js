@@ -20,6 +20,7 @@ var down = [],
   rl = [];
 
 function preload() {
+  //SPRITES
   down[0] = loadImage('https://diegohvp.github.io/pl/down01.png');
   down[1] = loadImage('https://diegohvp.github.io/pl/down02.png');
   down[2] = loadImage('https://diegohvp.github.io/pl/down00.png');
@@ -36,6 +37,7 @@ function preload() {
 
 function setup() {
   createCanvas(900, 580);
+  //FUNDO
   bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
 
 }
@@ -58,6 +60,11 @@ function draw() {
       menu()
       break;
   }
+  
+  
+  //O 'countframe' REGULA O NUMERO
+  //DE FRAMES NOS SPRITES
+  //O 'FR' EA VARIACAO DOS FRAMES
   countframe++
   if (countframe>15) {
     countframe=0
@@ -149,7 +156,7 @@ function keyPressed() {
 function sobre() {
   background(80, 80, 200)
   textSize(32)
-  text('<b>REGRAS DO JOGO</b>', 300, 40)
+  text('REGRAS DO JOGO', 300, 40)
   textSize(15)
   text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão', 100, 80)
   text('usando sua habilidade de matemática. Enfrentado problemas de', 80, 100)
