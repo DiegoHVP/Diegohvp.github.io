@@ -41,6 +41,16 @@ function draw() {
         menu()
       break;
     }
+  for (let countframe = 0, FR = 0;countframe<61;countframe++) {
+        if (countframe==60) {
+            countframe = (countframe/60)-1
+        }
+        if (countframe/30==3);
+            FR++
+        if (FR>2) {
+            FR=0
+        }
+  }
 }
 
 
@@ -155,15 +165,19 @@ function fase1() {
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
+    
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
+    player = rl[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 450) {
     y -= 5;
+    player = up[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 540) {
     y += 5;
+    player = down[FR]
   }
 }
          
