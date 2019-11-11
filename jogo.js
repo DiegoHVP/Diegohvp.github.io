@@ -95,6 +95,9 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65);
+  fill(0)
+  text(mouseX, 30,40)
+  text(mouseY, 30,55)
 
   
 }
