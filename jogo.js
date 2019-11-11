@@ -92,15 +92,15 @@ function menu() {
   stroke(255)
   text('ENTREGADOR DE MERCADORIAS', 200, 200)
   textSize(12);
-  
   text('A vida nunca foi tão emocionante.', 548, 220);
   textSize(32)
   stroke(0)
   text('Jogar', 390, 355);
   text('Regras', 380, 425);
   text('Sobre', 386, 498);
-  text(mouseX, 30,40)
-  text(mouseY, 30,55)
+  textSize(12)
+  text('X: '+mouseX, 30,40)
+  text('Y: '+mouseY, 30,55)
 
   noFill();
   strokeWeight(5)
