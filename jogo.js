@@ -1,59 +1,71 @@
-  //Outros
-    var bg, player, countframe, FR
-  //MENU
-    var xo = 365, yo = 455, cena = 1, aux;
-  //COR MENU RGB
-    var L = 10, S = 100, D = 200;
-  //Posicao player
-    var x = 30, y = 450, aux = 1, cena = 1;
-  //Sprites
-    var down = [], up = [], rl = [];
+//Outros
+var bg, player, countframe, FR
+//MENU
+var xo = 365,
+  yo = 455,
+  cena = 1,
+  aux = 1;
+//COR MENU RGB
+var L = 10,
+  S = 100,
+  D = 200;
+//Posicao player
+var x = 30,
+  y = 450,
+  aux = 1,
+  cena = 1;
+//Sprites
+var down = [],
+  up = [],
+  rl = [];
+
 function preload() {
-    down[0] = loadImage('/pl/down01.png');
-    down[1] = loadImage('/pl/down02.png');
-    down[2] = loadImage('/pl/down00.png');
+  down[0] = loadImage('/pl/down01.png');
+  down[1] = loadImage('/pl/down02.png');
+  down[2] = loadImage('/pl/down00.png');
 
-    up[0] = loadImage('/pl/up01.png');
-    up[1] = loadImage('/pl/up02.png');
-    up[2] = loadImage('/pl/up00.png');
+  up[0] = loadImage('/pl/up01.png');
+  up[1] = loadImage('/pl/up02.png');
+  up[2] = loadImage('/pl/up00.png');
 
-    rl[0] = loadImage('/pl/rl01.png');
-    rl[1] = loadImage('/pl/rl02.png');
-    rl[2] = loadImage('/pl/rl00.png');
-    player = down[1]; 
+  rl[0] = loadImage('/pl/rl01.png');
+  rl[1] = loadImage('/pl/rl02.png');
+  rl[2] = loadImage('/pl/rl00.png');
+  player = down[1];
 }
 
-function setup() {  
-    createCanvas(900, 580);
-    bg = loadImage('/ceneraio (1).png');
+function setup() {
+  createCanvas(900, 580);
+  bg = loadImage('/ceneraio (1).png');
 
 }
 
 function draw() {
-    switch (cena) {
-      case 1:
-        menu();
+  switch (cena) {
+    case 1:
+      menu();
       break;
-      case 2:
-        fase1();
+    case 2:
+      fase1();
       break;
-      case 3:
-        fase1();
+    case 3:
+      fase1();
       break;
-      default:
-        menu()
+    default:
+      menu()
       break;
-    }
-        var countframe = 0, FR = 0
-        countframe++
-        if (countframe==60) {
-            countframe = (countframe/60)-1
-        }
-        if (countframe/30==1);
-            FR++
-        if (FR>2) {
-            FR=0
-        }
+  }
+  var countframe = 0,
+    FR = 0
+  countframe++
+  if (countframe == 60) {
+    countframe = (countframe / 60) - 1
+  }
+  if (countframe / 30 == 1);
+  FR++
+  if (FR > 2) {
+    FR = 0
+  }
 }
 
 
@@ -102,49 +114,47 @@ function menu() {
   text('Regras', 380, 425);
   text('Sobre', 386, 498);
   textSize(12)
-  text('X: '+mouseX, 30,40)
-  text('Y: '+mouseY, 30,55)
+  text('X: ' + mouseX, 30, 40)
+  text('Y: ' + mouseY, 30, 55)
 
   noFill();
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30);
+console.log(yo+' '+aux)
 
 
-  
 }
 
 function keyPressed() {
-if (keyCode === ENTER)
+  if (keyCode === ENTER)
     cena = aux;
-if (keyCode === DOWN_ARROW) {
-    if (yo < 480) {
-      yo+=70
-      aux++
-      if (aux>=3) {
-        aux = 3
-      }
-    } else {
-         if (keyCode === UP_ARROW) {
-            if (yo > 200) {
-              yo-=70
-              if (aux<=1) {
-                aux=1
-              }
-            }
-         }
-         }
-  }
+  if (keyCode === DOWN_ARROW)
+    if (yo >= 315 && yo < 455) 
+      yo += 70
+  if (keyCode === UP_ARROW)
+    if (yo > 315 && yo <= 455)
+      yo -= 70
+  if (yo==385)
+    aux=2
+  else
+    if (yo==315)
+      aux=1
+  else
+    if (yo==455)
+      aux==3
 }
+
+
 function sobre() {
-  background(80,80,200)
+  background(80, 80, 200)
   textSize(32)
   text('<b>REGRAS DO JOGO</b>', 300, 40)
   textSize(15)
   text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão', 100, 80)
   text('usando sua habilidade de matemática. Enfrentado problemas de', 80, 100)
   text('soma é frações.', 80, 120)
-  
+
 }
 
 function fase1() {
@@ -158,7 +168,7 @@ function fase1() {
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
-    
+
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
@@ -173,17 +183,17 @@ function fase1() {
     player = down[FR]
   }
 }
-         
 
-         //SPRITE_PLAYER
-              /*down[0] = loadImage('/pl/down01.png')
-                down[1] = loadImage('/pl/down02.png')
-                down[2] = loadImage('/pl/down00.png')
 
-                up[0] = loadImage('/pl/up01.png')
-                up[1] = loadImage('/pl/up02.png')
-                up[2] = loadImage('/pl/up00.png')
+//SPRITE_PLAYER
+/*down[0] = loadImage('/pl/down01.png')
+  down[1] = loadImage('/pl/down02.png')
+  down[2] = loadImage('/pl/down00.png')
 
-                rl[0] = loadImage('/pl/rl01.png')
-                rl[1] = loadImage('/pl/rl02.png')
-                rl[2] = loadImage('/pl/rl00.png')*/
+  up[0] = loadImage('/pl/up01.png')
+  up[1] = loadImage('/pl/up02.png')
+  up[2] = loadImage('/pl/up00.png')
+
+  rl[0] = loadImage('/pl/rl01.png')
+  rl[1] = loadImage('/pl/rl02.png')
+  rl[2] = loadImage('/pl/rl00.png')*/
