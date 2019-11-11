@@ -5,7 +5,7 @@
   //COR MENU RGB
     var L = 10, S = 100, D = 200;
   //Posicao player
-    var x = 30, y = 500, aux = 1, cena = 1;
+    var x = 30, y = 450, aux = 1, cena = 1;
   //Sprites
     var down = [], up = [], rl = [];
 
@@ -150,7 +150,6 @@ function fase1() {
   fill(255)
   stroke(0)
 
-//PLAYER
   image(player, x, y, 30, 140)
 
 
