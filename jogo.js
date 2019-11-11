@@ -89,9 +89,7 @@ function menu() {
   text('Jogar', 390, 355);
   text('Regras', 380, 425);
   text('Sobre', 386, 498);
-  textSize(12)
-  text('X: '+mouseX,3 0, 30)
-  text('Y: '+mouseY, 30, 45)
+
 
   noFill();
   strokeWeight(5)
@@ -101,6 +99,9 @@ function menu() {
 }
 
 function keyPressed() {
+  textSize(12)
+  text('X: '+mouseX,3 0, 30)
+  text('Y: '+mouseY, 30, 45)
  
   if (cena == 2 || cena == 3)
     cena = 1;
