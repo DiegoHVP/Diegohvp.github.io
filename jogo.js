@@ -1,5 +1,5 @@
   //Outros
-    var bg, player;
+    var bg, player, countframe, FR
   //MENU
     var xo = 365, yo = 455, cena = 1, aux;
   //COR MENU RGB
