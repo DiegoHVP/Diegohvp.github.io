@@ -175,17 +175,16 @@ function fase1() {
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
-
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
     player = rl[FR]
   }
-  if (keyIsDown(UP_ARROW) && y > 450) {
+  if (keyIsDown(UP_ARROW) && y > 350) {
     y -= 5;
     player = up[FR]
   }
-  if (keyIsDown(DOWN_ARROW) && y < 540) {
+  if (keyIsDown(DOWN_ARROW) && y < 500) {
     y += 5;
     player = down[FR]
   }
