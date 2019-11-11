@@ -100,7 +100,7 @@ function menu() {
 
 function keyPressed() {
   textSize(12)
-  text('X: '+mouseX,3 0, 30)
+  text('X: '+mouseX, 30, 30)
   text('Y: '+mouseY, 30, 45)
  
   if (cena == 2 || cena == 3)
