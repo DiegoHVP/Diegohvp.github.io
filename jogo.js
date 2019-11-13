@@ -7,24 +7,34 @@ var x = 30, y = 450;
 //TELA
 var cena = 0, aux = 1;
 //Sprites
-var down = [], up = [], rl = [];
+var down = [], up = [], r = [], l = [];
 //Outros
 var bg, player, countframe = 0, FR = 0;
 
 function preload() {
   //SPRITES
-  down[0] = loadImage('/pl/down01.png');
-  down[1] = loadImage('/pl/down02.png');
-  down[2] = loadImage('/pl/down00.png');
+  down[0] = loadImage('/pl/down00.png');
+  down[1] = loadImage('/pl/down01.png');
+  down[2] = loadImage('/pl/down02.png');
+  down[3] = loadImage('/pl/down03.png');
 
-  up[0] = loadImage('/pl/up01.png');
-  up[1] = loadImage('/pl/up02.png');
-  up[2] = loadImage('/pl/up00.png');
+  up[0] = loadImage('/pl/up00.png');
+  up[1] = loadImage('/pl/up01.png');
+  up[2] = loadImage('/pl/up02.png');
+  up[3] = loadImage('/pl/up03.png');
 
-  rl[0] = loadImage('/pl/rl01.png');
-  rl[1] = loadImage('/pl/rl02.png');
-  rl[2] = loadImage('/pl/rl00.png');
-  player = down[1];
+
+  r[0] = loadImage('/pl/l00.png');
+  r[1] = loadImage('/pl/l01.png');
+  r[2] = loadImage('/pl/l02.png');
+  r[3] = loadImage('/pl/l03.png');
+  
+  r[2] = loadImage('/pl/r00.png');
+  r[2] = loadImage('/pl/r01.png');
+  r[2] = loadImage('/pl/r02.png');
+  r[3] = loadImage('/pl/r03.png');
+  
+  player = down[0];
 }
 
 function setup() {
@@ -61,7 +71,7 @@ function draw() {
   if (countframe>15) {
     countframe=0;
     FR++
-    if (FR>2) {
+    if (FR>3) {
       FR=0;
   }
 }
@@ -167,10 +177,11 @@ function fase1() {
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
+    player = r[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 775) {
     x += 5;
-    player = rl[FR];
+    player = l[FR];
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
     y -= 5;
