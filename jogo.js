@@ -160,9 +160,8 @@ function sobre() {
   textSize(32);
   text('OBJETIVO DO JOGO', 300, 40);
   textSize(15);
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão', 100, 80);
-  text('usando sua habilidade de matemática. Enfrentado problemas de', 80, 100);
-  text('soma é frações.', 80, 120);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão usando sua', 100, 80);
+  text(' habilidade de matemática. Enfrentado problemas de soma com frações.', 80, 100);
 
 }
 
