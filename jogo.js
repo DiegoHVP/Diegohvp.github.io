@@ -91,6 +91,10 @@ function regras() {
   fill('black');
 
   text('VAI TER ALGUMA COISA AQUI, EU ACHO...', 40, 55);
+  function keyPressed() {
+    if (keyCode==ENTER) 
+      cena = 0
+    }
 }
 
 function menu() {
