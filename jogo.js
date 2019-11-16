@@ -30,9 +30,9 @@ function preload() {
   r[3] = loadImage('/pl/l03.png');
   
   l[0] = loadImage('/pl/r00.png');
-  l[1] = loadImage('/pl/r01.png')
-  l[2] = loadImage('/pl/r02.png')
-  l[3] = loadImage('/pl/r03.png')
+  l[1] = loadImage('/pl/r01.png');
+  l[2] = loadImage('/pl/r02.png');
+  l[3] = loadImage('/pl/r03.png');
   
   player = down[0];
 }
