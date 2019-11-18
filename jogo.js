@@ -22,8 +22,7 @@ function preload() {
   up[1] = loadImage('/pl/up01.png');
   up[2] = loadImage('/pl/up02.png');
   up[3] = loadImage('/pl/up03.png');
-
-
+  
   r[0] = loadImage('/pl/l00.png');
   r[1] = loadImage('/pl/l01.png');
   r[2] = loadImage('/pl/l02.png');
