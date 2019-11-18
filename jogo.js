@@ -113,7 +113,7 @@ function draw() {
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
   countframe++
-  if (countframe > 10) {
+  if (countframe > 12) {
     countframe = 0;
     FR++
     if (FR > 3) {
@@ -293,6 +293,7 @@ function fase1() {
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
+    countframe++
     if (caixa == 0)
       player = r[FR]
     if (caixa == 1)
@@ -300,6 +301,7 @@ function fase1() {
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
     x += 5;
+    countframe++
     if (caixa == 0)
       player = l[FR]
     if (caixa == 1)
@@ -307,6 +309,7 @@ function fase1() {
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
     y -= 5;
+    countframe++
     if (caixa == 0)
       player = up[FR]
     if (caixa == 1)
@@ -314,6 +317,7 @@ function fase1() {
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
     y += 5;
+    countframe++
     if (caixa == 0)
       player = down[FR]
     if (caixa == 1)
