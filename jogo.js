@@ -247,7 +247,7 @@ function fase1() {
       ellipse(x+10, y-10, 12, 12)
       ellipse(x+22, y-20, 14, 14)
       strokeWeight(1);
-      rect(x+30, y-35, 100, 50, 10);
+      rect(x+30, y-35, 100, 20, 10);
       fill(0)
       text('CONSEGUI!!',x+35,y-20)
     }
