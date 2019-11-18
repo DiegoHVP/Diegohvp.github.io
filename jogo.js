@@ -11,11 +11,17 @@ var x = 30,
 //TELA
 var cena = 0,
   aux = 1;
-//Sprites
+//Sprites sem caixa
 var down = [],
   up = [],
   r = [],
   l = [];
+//Sprites com caixa
+var downc = [],
+  upc = [],
+  rc = [],
+  lc = [];
+
 //Outros
 var bg, player, countframe = 0,
   FR = 0,
@@ -45,6 +51,26 @@ function preload() {
   r[1] = loadImage('/pl/R01.png')
   r[2] = loadImage('/pl/R02.png')
   r[3] = loadImage('/pl/R01.png')
+  
+  downc[0] = loadImage('/cpl/Down00.png')
+  downc[1] = loadImage('/cpl/Down01.png')
+  downc[2] = loadImage('/cpl/Down02.png')
+  downc[3] = loadImage('/cpl/Down03.png')
+
+  upc[0] = loadImage('/cpl/up00.png')
+  upc[1] = loadImage('/cpl/up01.png')
+  upc[2] = loadImage('/cpl/up02.png')
+  upc[3] = loadImage('/cpl/up03.png')
+
+  lc[0] = loadImage('/cpl/L00.png')
+  lc[1] = loadImage('/cpl/L01.png')
+  lc[2] = loadImage('/cpl/L02.png')
+  lc[3] = loadImage('/cpl/L03.png')
+
+  rc[0] = loadImage('/cpl/R00.png')
+  rc[1] = loadImage('/cpl/R01.png')
+  rc[2] = loadImage('/cpl/R02.png')
+  rc[3] = loadImage('/cpl/R01.png')
 
 
   player = down[0];
@@ -254,27 +280,27 @@ function fase1() {
     if (caixa == 0)
       player = r[FR]
     if (caixa == 1)
-      player = r[0]
+      player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
     x += 5;
     if (caixa == 0)
       player = l[FR]
     if (caixa == 1)
-      player = l[0]
+      player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
     y -= 5;
     if (caixa == 0)
       player = up[FR]
     if (caixa == 1)
-      player = up[0]
+      player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
     y += 5;
     if (caixa == 0)
       player = down[FR]
     if (caixa == 1)
-      player = down[0]
+      player = downc[FR]
   }
 }
