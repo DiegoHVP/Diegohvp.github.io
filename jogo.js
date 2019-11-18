@@ -9,29 +9,28 @@ var cena = 0, aux = 1;
 //Sprites
 var down = [], up = [], r = [], l = [];
 //Outros
-var bg, player, countframe = 0, FR = 0;
+var bg, player, countframe = 0, FR = 0, caixa = 0, q1=0;
 
 function preload() {
-  //SPRITES
-  down[0] = loadImage('/pl/down00.png');
-  down[1] = loadImage('/pl/down01.png');
-  down[2] = loadImage('/pl/down02.png');
-  down[3] = loadImage('/pl/down03.png');
-
-  up[0] = loadImage('/pl/up00.png');
-  up[1] = loadImage('/pl/up01.png');
-  up[2] = loadImage('/pl/up02.png');
-  up[3] = loadImage('/pl/up03.png');
+  down[0] = loadImage('/pl/Down00.png')
+  down[1] = loadImage('/pl/Down01.png')
+  down[2] = loadImage('/pl/Down02.png')
+  down[3] = loadImage('/pl/Down03.png')
   
-  r[0] = loadImage('/pl/l00.png');
-  r[1] = loadImage('/pl/l01.png');
-  r[2] = loadImage('/pl/l02.png');
-  r[3] = loadImage('/pl/l03.png');
+  up[0] = loadImage('/pl/up00.png')
+  up[1] = loadImage('/pl/up01.png')
+  up[2] = loadImage('/pl/up02.png')
+  up[3] = loadImage('/pl/up03.png')
   
-  l[0] = loadImage('/pl/r00.png');
-  l[1] = loadImage('/pl/r01.png');
-  l[2] = loadImage('/pl/r02.png');
-  l[3] = loadImage('/pl/r03.png');
+  l[0] = loadImage('/pl/L00.png')
+  l[1] = loadImage('/pl/L01.png')
+  l[2] = loadImage('/pl/L02.png')
+  l[3] = loadImage('/pl/L03.png')
+  
+  r[0] = loadImage('/pl/R00.png')
+  r[1] = loadImage('/pl/R01.png')
+  r[2] = loadImage('/pl/R02.png')
+  r[3] = loadImage('/pl/R01.png')
   
   player = down[0];
 }
@@ -67,7 +66,7 @@ function draw() {
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
   countframe++
-  if (countframe>15) {
+  if (countframe>10) {
     countframe=0;
     FR++
     if (FR>3) {
@@ -90,7 +89,7 @@ function regras() {
   fill('black');
 
   text('VAI TER ALGUMA COISA AQUI, EU ACHO...', 40, 55);
-    if (keyIsPressed==true) 
+    if (keyCode==ENTER) 
       cena = 0
   
 }
@@ -169,41 +168,49 @@ function sobre() {
 
 function fase1() {
   background(bg);
-  strokeWeight(2);
-  fill(255);
+  strokeWeight(1);
+  fill(0);
   stroke(0);
-
+  textSize(12)
+  text('X: ' +x, 30, 40);
+  text('Y: ' + y, 30, 55);
+  text('Caixas no caminhão: '+q1, 30, 70)
+  textSize(14)
+  text('Presione Z para pegar a caixa no deposito e para soltalas no caminhão.', 430, 175)
+  console.log(keyCode+' '+caixa)
+  if (keyCode==90 && x>=5 && x<=195 && y<360)
+      caixa = 1
+  if (keyCode==90 && x>=705 && y<=435 && caixa==1)
+    caixa = 0, q1++
   image(player, x, y, 80, 150);
 
 
   if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= 5;
-    player = r[FR]
+    if (caixa==0) 
+      player = r[FR]
+    if (caixa==1)
+      player = r[0]
   }
-  if (keyIsDown(RIGHT_ARROW) && x < 775) {
+  if (keyIsDown(RIGHT_ARROW) && x < 730) {
     x += 5;
-    player = l[FR];
+    if (caixa==0)
+      player = l[FR]
+    if (caixa==1)
+      player = l[0]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
     y -= 5;
-    player = up[FR];
+    if (caixa==0)
+      player = up[FR]
+    if (caixa==1)
+      player = up[0]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
     y += 5;
-    player = down[FR];
-  }
+    if (caixa==0)
+      player = down[FR]
+    if (caixa==1)
+      player = down[0]
 }
-
-
-//SPRITE_PLAYER
-/*down[0] = loadImage('/pl/down01.png')
-  down[1] = loadImage('/pl/down02.png')
-  down[2] = loadImage('/pl/down00.png')
-
-  up[0] = loadImage('/pl/up01.png')
-  up[1] = loadImage('/pl/up02.png')
-  up[2] = loadImage('/pl/up00.png')
-
-  rl[0] = loadImage('/pl/rl01.png')
-  rl[1] = loadImage('/pl/rl02.png')
-  rl[2] = loadImage('/pl/rl00.png')*/
+}
