@@ -55,17 +55,17 @@ function preload() {
   downc[0] = loadImage('/cpl/Down00.png')
   downc[1] = loadImage('/cpl/Down01.png')
   downc[2] = loadImage('/cpl/Down02.png')
-  downc[3] = loadImage('/cpl/Down03.png')
+  downc[3] = loadImage('/cpl/Down01.png')
 
   upc[0] = loadImage('/cpl/up00.png')
   upc[1] = loadImage('/cpl/up01.png')
   upc[2] = loadImage('/cpl/up02.png')
-  upc[3] = loadImage('/cpl/up03.png')
+  upc[3] = loadImage('/cpl/up01.png')
 
   lc[0] = loadImage('/cpl/L00.png')
   lc[1] = loadImage('/cpl/L01.png')
   lc[2] = loadImage('/cpl/L02.png')
-  lc[3] = loadImage('/cpl/L03.png')
+  lc[3] = loadImage('/cpl/L01.png')
 
   rc[0] = loadImage('/cpl/R00.png')
   rc[1] = loadImage('/cpl/R01.png')
