@@ -34,47 +34,47 @@ var somjogo, somcaixa, somwin
 
 function preload() {
   //PLAYER SEM A CAIXA
-  down[0] = loadImage('https://diegohvp.github.io/pl/Down00.png')
-  down[1] = loadImage('https://diegohvp.github.io/pl/Down01.png')
-  down[2] = loadImage('https://diegohvp.github.io/pl/Down02.png')
-  down[3] = loadImage('https://diegohvp.github.io/pl/Down03.png')
+  down[0] = loadImage('/pl/Down00.png')
+  down[1] = loadImage('/pl/Down01.png')
+  down[2] = loadImage('/pl/Down02.png')
+  down[3] = loadImage('/pl/Down03.png')
 
-  up[0] = loadImage('https://diegohvp.github.io/pl/up00.png')
-  up[1] = loadImage('https://diegohvp.github.io/pl/up01.png')
-  up[2] = loadImage('https://diegohvp.github.io/pl/up02.png')
-  up[3] = loadImage('https://diegohvp.github.io/pl/up03.png')
+  up[0] = loadImage('/pl/up00.png')
+  up[1] = loadImage('/pl/up01.png')
+  up[2] = loadImage('/pl/up02.png')
+  up[3] = loadImage('/pl/up03.png')
 
-  l[0] = loadImage('https://diegohvp.github.io/pl/L00.png')
-  l[1] = loadImage('https://diegohvp.github.io/pl/L01.png')
-  l[2] = loadImage('https://diegohvp.github.io/pl/L02.png')
-  l[3] = loadImage('https://diegohvp.github.io/pl/L03.png')
+  l[0] = loadImage('/pl/L00.png')
+  l[1] = loadImage('/pl/L01.png')
+  l[2] = loadImage('/pl/L02.png')
+  l[3] = loadImage('/pl/L03.png')
 
-  r[0] = loadImage('https://diegohvp.github.io/pl/R00.png')
-  r[1] = loadImage('https://diegohvp.github.io/pl/R01.png')
-  r[2] = loadImage('https://diegohvp.github.io/pl/R02.png')
-  r[3] = loadImage('https://diegohvp.github.io/pl/R01.png')
+  r[0] = loadImage('/pl/R00.png')
+  r[1] = loadImage('/pl/R01.png')
+  r[2] = loadImage('/pl/R02.png')
+  r[3] = loadImage('/pl/R01.png')
   
   
   //PLAYER COM A CAIXA
-  downc[0] = loadImage('https://diegohvp.github.io/Cpl/Down00.png')
-  downc[1] = loadImage('https://diegohvp.github.io/Cpl/Down01.png')
-  downc[2] = loadImage('https://diegohvp.github.io/Cpl/Down02.png')
-  downc[3] = loadImage('https://diegohvp.github.io/Cpl/Down01.png')
+  downc[0] = loadImage('/Cpl/Down00.png')
+  downc[1] = loadImage('/Cpl/Down01.png')
+  downc[2] = loadImage('/Cpl/Down02.png')
+  downc[3] = loadImage('/Cpl/Down01.png')
 
-  upc[0] = loadImage('https://diegohvp.github.io/Cpl/up00.png')
-  upc[1] = loadImage('https://diegohvp.github.io/Cpl/up01.png')
-  upc[2] = loadImage('https://diegohvp.github.io/Cpl/up02.png')
-  upc[3] = loadImage('https://diegohvp.github.io/Cpl/up01.png')
+  upc[0] = loadImage('/Cpl/up00.png')
+  upc[1] = loadImage('/Cpl/up01.png')
+  upc[2] = loadImage('/Cpl/up02.png')
+  upc[3] = loadImage('/Cpl/up01.png')
 
-  lc[0] = loadImage('https://diegohvp.github.io/Cpl/l00.png')
-  lc[1] = loadImage('https://diegohvp.github.io/Cpl/L01.png')
-  lc[2] = loadImage('https://diegohvp.github.io/Cpl/L02.png')
-  lc[3] = loadImage('https://diegohvp.github.io/Cpl/L01.png')
+  lc[0] = loadImage('/Cpl/l00.png')
+  lc[1] = loadImage('/Cpl/L01.png')
+  lc[2] = loadImage('/Cpl/L02.png')
+  lc[3] = loadImage('/Cpl/L01.png')
 
-  rc[0] = loadImage('https://diegohvp.github.io/Cpl/r00.png')
-  rc[1] = loadImage('https://diegohvp.github.io/Cpl/r01.png')
-  rc[2] = loadImage('https://diegohvp.github.io/Cpl/r02.png')
-  rc[3] = loadImage('https://diegohvp.github.io/Cpl/r01.png')
+  rc[0] = loadImage('/Cpl/r00.png')
+  rc[1] = loadImage('/Cpl/r01.png')
+  rc[2] = loadImage('/Cpl/r02.png')
+  rc[3] = loadImage('/Cpl/r01.png')
   
   player = down[0];
 }
@@ -82,7 +82,7 @@ function preload() {
 function setup() {
   createCanvas(900, 580);
   //FUNDO
-  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
+  bg = loadImage('/ceneraio (1).png');
 
 }
 
@@ -243,13 +243,13 @@ function fase1() {
 
   //CONDIÇÕES
   if (keyCode == 90 && x >= 5 && x <= 195 && y < 360)
-    caixa = 1
+    caixa = 1, player = upc[1]
   if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++
+    caixa = 0, q1++, player = r[1]
   if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-    caixa = 1, q1--
+    caixa = 1, q1--, player = rc[1]
   if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0
+    caixa = 0, player = up[1]
   
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
