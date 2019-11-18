@@ -52,27 +52,26 @@ function preload() {
   r[2] = loadImage('/pl/R02.png')
   r[3] = loadImage('/pl/R01.png')
   
-  downc[0] = loadImage('/cpl/Down00.png')
-  downc[1] = loadImage('/cpl/Down01.png')
-  downc[2] = loadImage('/cpl/Down02.png')
-  downc[3] = loadImage('/cpl/Down01.png')
+  downc[0] = loadImage('/Cpl/Down00.png')
+  downc[1] = loadImage('/Cpl/Down01.png')
+  downc[2] = loadImage('/Cpl/Down02.png')
+  downc[3] = loadImage('/Cpl/Down01.png')
 
-  upc[0] = loadImage('/cpl/up00.png')
-  upc[1] = loadImage('/cpl/up01.png')
-  upc[2] = loadImage('/cpl/up02.png')
-  upc[3] = loadImage('/cpl/up01.png')
+  upc[0] = loadImage('/Cpl/up00.png')
+  upc[1] = loadImage('/Cpl/up01.png')
+  upc[2] = loadImage('/Cpl/up02.png')
+  upc[3] = loadImage('/Cpl/up01.png')
 
-  lc[0] = loadImage('/cpl/L00.png')
-  lc[1] = loadImage('/cpl/L01.png')
-  lc[2] = loadImage('/cpl/L02.png')
-  lc[3] = loadImage('/cpl/L01.png')
+  lc[0] = loadImage('/Cpl/l00.png')
+  lc[1] = loadImage('/Cpl/L01.png')
+  lc[2] = loadImage('/Cpl/L02.png')
+  lc[3] = loadImage('/Cpl/L01.png')
 
-  rc[0] = loadImage('/cpl/R00.png')
-  rc[1] = loadImage('/cpl/R01.png')
-  rc[2] = loadImage('/cpl/R02.png')
-  rc[3] = loadImage('/cpl/R01.png')
-
-
+  rc[0] = loadImage('/Cpl/r00.png')
+  rc[1] = loadImage('/Cpl/r01.png')
+  rc[2] = loadImage('/Cpl/r02.png')
+  rc[3] = loadImage('/Cpl/r01.png')
+  
   player = down[0];
 }
 
