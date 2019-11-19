@@ -231,9 +231,11 @@ function fase1() {
   text('Questão ', 180, 30)
   fill('red')
   text('01', 231, 30)
-  fill(0)
+  fill(0);
+  strokeWeight(0)
   text(': O CAMINHÃO DE JOÃOZINHO ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ PODE ENCHER O\nCAMINHÃO PARA ELE?', 245, 30)
-  textSize(14)
+  textSize(12)
+  stroke(255);
   text('Pressione Z para pegar a caixa no deposito.', 490, 145)
   text('Pressione X para pegar as caixas que já estão no caminhão', 490, 160)
   text('Pressione ESPAÇO para verificar a resposta.', 490, 174)
