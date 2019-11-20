@@ -149,8 +149,6 @@ function menu() {
   L++
   S++
   D++
-  sons[0].setVolume(0,1)
-  sons[0].play();
   if (L >= 255)
     L = random(0, 255);
   if (S >= 255)
