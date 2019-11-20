@@ -30,9 +30,13 @@ var bg, player, countframe = 0,
   q2 = 0,
   time = 0;
 //SOM
-var somjogo, somcaixa, somwin
+var sons = []
 
 function preload() {
+  soundFormats('m4a');
+  sons[0] = loadSound('/theme (cave story).m4a')
+  sons[1] = loadSound('/got.m4a')
+  
   //PLAYER SEM A CAIXA
   down[0] = loadImage('/pl/Down00.png')
   down[1] = loadImage('/pl/Down01.png')
@@ -145,6 +149,8 @@ function menu() {
   L++
   S++
   D++
+  sons[0].setVolume(0,1)
+  sons[0].play();
   if (L >= 255)
     L = random(0, 255);
   if (S >= 255)
@@ -266,6 +272,8 @@ function fase1() {
       rect(x+30, y-35, 100, 20, 10);
       fill(0)
       text('CONSEGUI!!',x+35,y-20)
+      sons[1].setVolume(0,1);
+      sons[1].play();
         if (keyIsPressed)
           cena = 4
     
