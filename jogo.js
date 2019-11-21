@@ -34,7 +34,7 @@ var bg, player, countframe = 0,
   fase = 1,
   pontos = [];
   //SOM
-  sons = []
+  var sons = []
 
 function preload() {
   soundFormats('ogg');
