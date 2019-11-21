@@ -32,6 +32,7 @@ var bg, player, countframe = 0,
   logo,
   XP = 12000,
   fase = 1,
+    sonsON
   pontos = [];
   //SOM
   var sons = []
@@ -66,25 +67,25 @@ function preload() {
 
 
   //PLAYER COM A CAIXA
-  downc[0] = loadImage('https://diegohvp.github.io/Cpl/Down00.png')
-  downc[1] = loadImage('https://diegohvp.github.io/Cpl/Down01.png')
-  downc[2] = loadImage('https://diegohvp.github.io/Cpl/Down02.png')
-  downc[3] = loadImage('https://diegohvp.github.io/Cpl/Down01.png')
+  downc[0] = loadImage('https://diegohvp.github.io/Cpl/-Down00.png')
+  downc[1] = loadImage('https://diegohvp.github.io/Cpl/-Down01.png')
+  downc[2] = loadImage('https://diegohvp.github.io/Cpl/-Down02.png')
+  downc[3] = loadImage('https://diegohvp.github.io/Cpl/-Down01.png')
 
   upc[0] = loadImage('https://diegohvp.github.io/Cpl/up00.png')
   upc[1] = loadImage('https://diegohvp.github.io/Cpl/up01.png')
   upc[2] = loadImage('https://diegohvp.github.io/Cpl/up02.png')
   upc[3] = loadImage('https://diegohvp.github.io/Cpl/up01.png')
 
-  lc[0] = loadImage('https://diegohvp.github.io/Cpl/l00.png')
-  lc[1] = loadImage('https://diegohvp.github.io/Cpl/L01.png')
-  lc[2] = loadImage('https://diegohvp.github.io/Cpl/L02.png')
-  lc[3] = loadImage('https://diegohvp.github.io/Cpl/L01.png')
+  lc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-l00.png')
+  lc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L01.png')
+  lc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-l00.png')
+  lc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L02.png')
 
-  rc[0] = loadImage('https://diegohvp.github.io/Cpl/r00.png')
-  rc[1] = loadImage('https://diegohvp.github.io/Cpl/r01.png')
-  rc[2] = loadImage('https://diegohvp.github.io/Cpl/r02.png')
-  rc[3] = loadImage('https://diegohvp.github.io/Cpl/r01.png')
+  rc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r00.png')
+  rc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
+  rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r00.png')
+  rc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
   
   
   logo = loadImage('https://diegohvp.github.io/logo.png')
@@ -195,8 +196,11 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30);
-  sons[0].setVolume(0,1);
+  if(sonsON==undefined)
+    sonsON = 1
+  sons[0].setVolume(0.1);
   sons[0].play();
+}
 
 }
 
