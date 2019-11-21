@@ -39,9 +39,9 @@ var bg, player, countframe = 0,
 function preload() {
   soundFormats('ogg');
   //Menu
-  sons[0] = loadSound('/Got Item! (Internal Percussion).ogg')
+  sons[1] = loadSound('/Got Item! (Internal Percussion).ogg')
   //GANHOU
-  sons[1] = loadSound('/Cave Story.ogg')
+  sons[0] = loadSound('/Cave Story.ogg')
 
  //PLAYER SEM A CAIXA
   down[0] = loadImage('https://diegohvp.github.io/pl/Down00.png')
@@ -160,7 +160,7 @@ function menu() {
   //RESTAURAR DADOS
   if(q1!=0)
     q1 = 0, q1 = 0, x = 30, y = 450, XP = 12000
-  sons[0].setVolume(0.1);
+  sons[0].setVolume(0,1);
   sons[0].play();
   //TELA
   L++
