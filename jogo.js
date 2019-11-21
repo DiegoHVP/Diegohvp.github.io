@@ -90,14 +90,13 @@ function preload() {
   
   logo = loadImage('https://diegohvp.github.io/logo.png')
   player = down[0];
+  
+  //FUNDO
+  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
 }
 
 function setup() {
   createCanvas(900, 580);
-  //FUNDO
-  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
-  
-
 }
 
 function draw() {
@@ -147,7 +146,7 @@ function regras() {
   strokeWeight(1);
 textSize(28);
   text('REGRAS', 340, 30)
-  textSze(14)
+  textSize(14)
   text('O Jogador não pode conjurar magias, lançar raios, usar telepatia ou qualquer\noutro tipo de poder que possa lhe dar vantagem no jogo.', 40, 55);
 
   textSize(12)
