@@ -32,11 +32,9 @@ var bg, player, countframe = 0,
   logo,
   XP = 12000,
   fase = 1,
-  pontos = [],
+  pontos = [];
+  //SOM
   sons = []
- 
-//SOM
-var somjogo, somcaixa, somwin
 
 function preload() {
   soundFormats('ogg');
@@ -161,8 +159,9 @@ textSize(28);
 function menu() {
   //RESTAURAR DADOS
   if(q1!=0)
-    q1 = 0, q1 = 0, x = 30, y = 450
-    
+    q1 = 0, q1 = 0, x = 30, y = 450, XP = 12000
+  sons[0].setVolume(0.1);
+  sons[0].play();
   //TELA
   L++
   S++
@@ -306,6 +305,8 @@ function fase1() {
       text('PARABENS!!', 345, 259)
       textSize(12);
       text('Pressione S para ir para a proxima fase.', 343, 270);
+      sons[1].setVolume(0.1);
+      sons[1].play();_
     }
   else
   if (time < 4000) {
