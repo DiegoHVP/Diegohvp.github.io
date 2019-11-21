@@ -32,7 +32,7 @@ var bg, player, countframe = 0,
   logo,
   XP = 12000,
   fase = 1,
-    sonsON
+    sonsON,
   pontos = [];
   //SOM
   var sons = []
@@ -196,7 +196,7 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30);
-  if(sonsON==undefined)
+  if(sonsON==undefined) {
     sonsON = 1
   sons[0].setVolume(0.1);
   sons[0].play();
