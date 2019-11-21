@@ -40,9 +40,9 @@ var bg, player, countframe = 0,
 function preload() {
   soundFormats('ogg');
   //Menu
-  sons[1] = loadSound('/Got Item! (Internal Percussion).ogg')
+  sons[1] = loadSound('https://diegohvp.github.io/Got Item! (Internal Percussion).ogg')
   //GANHOU
-  sons[0] = loadSound('/Cave Story.ogg')
+  sons[0] = loadSound('https://diegohvp.github.io/Cave Story.ogg')
 
  //PLAYER SEM A CAIXA
   down[0] = loadImage('https://diegohvp.github.io/pl/Down00.png')
@@ -79,13 +79,13 @@ function preload() {
 
   lc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-l00.png')
   lc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L01.png')
-  lc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-l00.png')
-  lc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L02.png')
+  lc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L02.png')
+  lc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L01.png')
 
   rc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r00.png')
   rc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
-  rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r00.png')
-  rc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
+  rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
+  rc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
   
   
   logo = loadImage('https://diegohvp.github.io/logo.png')
@@ -269,13 +269,13 @@ function fase1() {
   text(q1, 850, 430)
   fill('black')
   textSize(16)
-  text('Questão ', 85, 30)
+  text('Questão ', 78, 34)
   fill('red')
-  text('01', 150, 30)
+  text('01', 150, 34)
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': O CAMINHÃO DE JOÃOZINHO ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 30)
+  text(': O CAMINHÃO DE JOÃOZINHO ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
   textSize(12)
   stroke(255);
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 570, 145)
@@ -309,8 +309,12 @@ function fase1() {
       text('PARABENS!!', 345, 259)
       textSize(12);
       text('Pressione S para ir para a proxima fase.', 343, 270);
+      if (sonsON==1) {
+        sonsON=undefined
+      sons[0].stop()
       sons[1].setVolume(0.1);
-      sons[1].play();_
+      sons[1].play()
+      };
     }
   else
   if (time < 4000) {
@@ -337,7 +341,7 @@ function fase1() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= 7;
+    x -= 10;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -345,7 +349,7 @@ function fase1() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += 7;
+    x += 10;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -353,7 +357,7 @@ function fase1() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= 7;
+    y -= 10;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -361,7 +365,7 @@ function fase1() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += 7;
+    y += 10;
     countframe++
     if (caixa == 0)
       player = down[FR]
@@ -370,7 +374,6 @@ function fase1() {
   }
   
   
-  console.log('botão: '+keyCode)
   if (keyCode==81)
     cena = 99
 }
