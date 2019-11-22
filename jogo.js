@@ -31,11 +31,15 @@ var bg, player, countframe = 0,
   time = 0,
   logo,
   XP = 12000,
-  fase = 1,
   sonsON,
-  pontos = [];
-  //SOM
-  var sons = []
+  stage = 0,
+  pontos = [],
+  lista = '',
+  N = 18
+//LEMBRAR var N EA VELOCIDADE
+//TIRAR DEPOIS
+//SOM
+var sons = []
 
 function preload() {
   soundFormats('ogg');
@@ -44,7 +48,7 @@ function preload() {
   //GANHOU
   sons[0] = loadSound('https://diegohvp.github.io/Cave Story.ogg')
 
- //PLAYER SEM A CAIXA
+  //PLAYER SEM A CAIXA
   down[0] = loadImage('https://diegohvp.github.io/pl/Down00.png')
   down[1] = loadImage('https://diegohvp.github.io/pl/Down01.png')
   down[2] = loadImage('https://diegohvp.github.io/pl/Down02.png')
@@ -86,11 +90,11 @@ function preload() {
   rc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
   rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
   rc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
-  
-  
+
+
   logo = loadImage('https://diegohvp.github.io/logo.png')
   player = down[0];
-  
+
   //FUNDO
   bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
 }
@@ -116,8 +120,11 @@ function draw() {
     case 4:
       fase2();
       break;
-      case 99:
+    case 99:
       gameover();
+      break;
+    case 100:
+      win()
       break;
   }
 
@@ -126,40 +133,18 @@ function draw() {
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
   countframe++
-  if (countframe > 20) {
-    countframe = 0;
-    FR++
-    if (FR > 3) {
-      FR = 0;
-    }
-  }
+  if (countframe > 20)
+    countframe = 0, FR++
+  if (FR > 3)
+    FR = 0;
 }
-
-
-
-function regras() {
-  //R, G, B
-  background('#7FDBFF');
-
-  fill('white');
-  stroke('black');
-  strokeWeight(1);
-textSize(28);
-  text('REGRAS', 340, 30)
-  textSize(14)
-  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia ou qualquer\noutro tipo de poder que possa lhe dar vantagem no jogo.', 40, 55);
-
-  textSize(12)
-  text('Pressione ESPAÇO para Voltar ao menu.', 350, 500);
-  if (keyCode == 32)
-    cena = 0
-
-}
-
+////////////////////////////////////////////////////////////////////////////////////////////
+//MENU////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
 function menu() {
   //RESTAURAR DADOS
-  if(q1!=0)
-    q1 = 0, q1 = 0, x = 30, y = 450, XP = 12000, fase = 1
+  if (q1 != 0)
+    q1 = 0, q1 = 0, x = 30, y = 450, XP = 12000, stage++
 
   //TELA
   L++
@@ -182,7 +167,7 @@ function menu() {
   textSize(32);
   fill('black');
   stroke(255);
-  image(logo, 130, 200, 680,60);
+  image(logo, 130, 200, 680, 60);
   textSize(12);
   text('A vida nunca foi tão emocionante.', 588, 270);
   textSize(32);
@@ -195,14 +180,69 @@ function menu() {
   strokeWeight(5)
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30);
-  if(sonsON==undefined) {
+  if (sonsON == undefined) {
     sonsON = 1
-  sons[0].setVolume(0.1);
-  sons[0].play();
+    sons[0].setVolume(0.1);
+    sons[0].play();
+    //RANKIAR JOGADORES
+    for (let i = 0, lista = ''; pontos[i] != undefined; i++) {
+      for (let ii = 0, rank; pontos[ii] != undefined; ii++) {
+        if (pontos[i] <=pontos[ii]) {
+          rank = pontos[i]
+          pontos[i] = pontos[ii]
+          pontos[ii] = rank
+        }
+      }
+    }
+    //LISTA
+    for (let i = 4; i > -1 ; i--) {
+      if (pontos[i] != undefined)
+        lista = (i + 1) + '° ' + pontos[i] + '\n' + lista
+    }
+  }
+  if (lista == '')
+    lista = '.....'
+  textSize(18)
+  fill(0)
+  stroke('grey')
+  strokeWeight(1)
+  text('RANKING:\n\n' + lista, 40, 340)
 }
+function regras() {
+  //R, G, B
+  background('#7FDBFF');
+
+  fill(0);
+  stroke('grey');
+  strokeWeight(1);
+  textSize(32);
+  text('REGRAS',350, 40)
+  textSize(18)
+  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia ou qualquer outro tipo de poder que possa lhe\ndar vantagem no jogo.', 100, 80);
+
+  textSize(18)
+  text('Pressione ESPAÇO para Voltar ao menu.', 350, 500);
+  if (keyCode == 32)
+    cena = 0
 
 }
+function sobre() {
+  background(80, 80, 200);
+  textSize(32);
+  fill(0)
+  text('OBJETIVO DO JOGO', 290, 40);
+  textSize(18);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão usando sua habilidade\nde matemática.Enfrentado problemas de soma com frações.', 100, 80);
+  text('', 80, 100);
+  stroke('blue');
+  strokeWeight(1);
+  textSize(18)
+  text('Pressione ESPAÇO para Voltar ao menu.', 350, 500);
+  if (keyCode == 32)
+    cena = 0
 
+}
+//CONTROLES MENU
 function keyPressed() {
   if (cena == 0) {
     if (keyCode === ENTER)
@@ -222,30 +262,11 @@ function keyPressed() {
     if (yo == 455)
       aux = 3;
   }
-  
 }
-
-
-function sobre() {
-  background(80, 80, 200);
-  textSize(32);
-  fill(0)
-  text('OBJETIVO DO JOGO', 300, 40);
-  textSize(15);
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão usando sua', 100, 80);
-  text(' habilidade de matemática. Enfrentado problemas de soma com frações.', 80, 100);
-  stroke('blue');
-  strokeWeight(1);
-  textSize(12)
-  text('Pressione ESPAÇO para Voltar ao menu.', 350, 500);
-  if (keyCode == 32)
-    cena = 0
-
-}
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////
-//FASE 1//////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//FASE 1/////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
 function fase1() {
   //TELA
@@ -264,6 +285,7 @@ function fase1() {
   textSize(12)
   text('Caixas no\ncaminhão:', 830, 380)
   fill('blue')
+  text('TESTE\nGameOver Q\nGanhou G',78,210)
   textSize(32)
   text(q1, 850, 430)
   fill('black')
@@ -278,6 +300,18 @@ function fase1() {
   textSize(12)
   stroke(255);
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 570, 145)
+
+  ////////////////////
+  XP--
+  textSize(22)
+  fill(255)
+  stroke('grey')
+  strokeWeight(3)
+  rect(20, 90, 105, 40, 10)
+  strokeWeight(1)
+  fill(0)
+  text('XPs: ' + parseInt(XP / 100), 26, 118)
+  //////////////////
 
   //CONDIÇÕES
   if (keyCode == 90 && x >= 5 && x <= 195 && y < 360)
@@ -308,11 +342,12 @@ function fase1() {
       text('PARABENS!!', 345, 259)
       textSize(12);
       text('Pressione S para ir para a proxima fase.', 343, 270);
-      if (sonsON==1) {
-        sonsON=undefined
-      sons[0].stop()
-      sons[1].setVolume(0.1);
-      sons[1].play()
+      if (sonsON == 1) {
+        sonsON = undefined
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] = parseInt(XP / 100)
       };
     }
   else
@@ -340,7 +375,7 @@ function fase1() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= 6;
+    x -= N;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -348,7 +383,7 @@ function fase1() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += 6;
+    x += N;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -356,7 +391,7 @@ function fase1() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= 6;
+    y -= N;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -364,36 +399,64 @@ function fase1() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += 6;
+    y += N;
     countframe++
     if (caixa == 0)
       player = down[FR]
     if (caixa == 1)
       player = downc[FR]
   }
-  
-  
-  if (keyCode==81)
-    cena = 99
-}
 
+
+  if (keyCode == 81)
+    cena = 99
+  if (keyCode == 71)
+    cena = 100
+}
+//////FIM FASE 1///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//FASE 2////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 function fase2() {
-  if(x != 30 || y != 450)
+  if (x != 30 || y != 450)
     x = 30, y = 450
   background('grey');
   textSize(22)
   text('Não a nada aqui', 200, 400);
-  text('pressione ENTER para ir para o menu',200, 450)
-  if (keyCode==ENTER)
+  text('pressione ENTER para ir para o menu', 200, 450)
+  if (keyCode == ENTER)
     cena = 0
-  
+
 }
+/////FIM FASE 2/////////////////////////////////////////////////////////////////////////
+
 function gameover() {
   background('grey');
   textSize(45)
   fill(0)
-  text('GAME OVER', (width*5)/14, height/2)
-  if (keyCode==ENTER)
+  text('GAME OVER', (width * 5) / 14 - 20, height / 2)
+  textSize(18)
+  strokeWeight(1)
+  stroke('grey')
+  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
+  text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
+  if (keyCode == ENTER)
     cena = 0
 
+}
+function win() {
+  background(220);
+  textSize(32)
+  fill(0)
+  text('VOCE GANHOU!!', (width * 5) / 14 - 20, height / 2 + 30)
+  textSize(45)
+  text('PARABENS', (width * 5) / 14 - 20, height / 2 - 30)
+  textSize(18)
+  strokeWeight(1)
+  stroke('grey')
+  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
+  text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
+  if (keyCode == ENTER)
+    cena = 0
 }
