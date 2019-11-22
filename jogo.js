@@ -340,7 +340,7 @@ function fase1() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= 10;
+    x -= 6;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -348,7 +348,7 @@ function fase1() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += 10;
+    x += 6;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -356,7 +356,7 @@ function fase1() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= 10;
+    y -= 6;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -364,7 +364,7 @@ function fase1() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += 10;
+    y += 6;
     countframe++
     if (caixa == 0)
       player = down[FR]
