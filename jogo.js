@@ -32,7 +32,7 @@ var bg, player, countframe = 0,
   logo,
   XP = 12000,
   fase = 1,
-    sonsON,
+  sonsON,
   pontos = [];
   //SOM
   var sons = []
@@ -72,10 +72,10 @@ function preload() {
   downc[2] = loadImage('https://diegohvp.github.io/Cpl/-Down02.png')
   downc[3] = loadImage('https://diegohvp.github.io/Cpl/-Down01.png')
 
-  upc[0] = loadImage('https://diegohvp.github.io/Cpl/up00.png')
-  upc[1] = loadImage('https://diegohvp.github.io/Cpl/up01.png')
-  upc[2] = loadImage('https://diegohvp.github.io/Cpl/up02.png')
-  upc[3] = loadImage('https://diegohvp.github.io/Cpl/up01.png')
+  upc[0] = loadImage('https://diegohvp.github.io/Cpl/-up00.png')
+  upc[1] = loadImage('https://diegohvp.github.io/Cpl/-up01.png')
+  upc[2] = loadImage('https://diegohvp.github.io/Cpl/-up02.png')
+  upc[3] = loadImage('https://diegohvp.github.io/Cpl/-up01.png')
 
   lc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-l00.png')
   lc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L01.png')
