@@ -173,7 +173,7 @@ function menu() {
   textSize(32);
   stroke(0);
   text('Jogar', 390, 355);
-  text('Regras', 380, 425);
+  text('Regras', 376, 425);
   text('Sobre', 386, 498);
 
   noFill();
@@ -195,7 +195,7 @@ function menu() {
       }
     }
     //LISTA
-    for (let i = 4; i > -1 ; i--) {
+    for (var i = 4, lista = ''; i > -1 ; i--) {
       if (pontos[i] != undefined)
         lista = (i + 1) + '° ' + pontos[i] + '\n' + lista
     }
@@ -216,12 +216,12 @@ function regras() {
   stroke('grey');
   strokeWeight(1);
   textSize(32);
-  text('REGRAS',350, 40)
+  text('REGRAS',370, 40)
   textSize(18)
-  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia ou qualquer outro tipo de poder que possa lhe\ndar vantagem no jogo.', 100, 80);
+  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia ou qualquer\noutro tipo de poder que possa lhe dar vantagem no jogo.', 100, 80);
 
   textSize(18)
-  text('Pressione ESPAÇO para Voltar ao menu.', 350, 500);
+  text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
   if (keyCode == 32)
     cena = 0
 
@@ -230,14 +230,14 @@ function sobre() {
   background(80, 80, 200);
   textSize(32);
   fill(0)
-  text('OBJETIVO DO JOGO', 290, 40);
+  text('OBJETIVO DO JOGO', 300, 40);
   textSize(18);
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão usando sua habilidade\nde matemática.Enfrentado problemas de soma com frações.', 100, 80);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão usando sua\nhabilidade de matemática.Enfrentado problemas de soma com frações.', 100, 80);
   text('', 80, 100);
   stroke('blue');
   strokeWeight(1);
   textSize(18)
-  text('Pressione ESPAÇO para Voltar ao menu.', 350, 500);
+  text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
   if (keyCode == 32)
     cena = 0
 
