@@ -35,9 +35,8 @@ var bg, player, countframe = 0,
   stage = 0,
   pontos = [],
   lista = '',
-  N = 18
-//LEMBRAR var N EA VELOCIDADE
-//TIRAR DEPOIS
+  N = 18; //LEMBRAR var N E A VELOCIDADE, TIRAR DEPOIS
+
 //SOM
 var sons = []
 
@@ -185,7 +184,7 @@ function menu() {
     sons[0].setVolume(0.1);
     sons[0].play();
     //RANKIAR JOGADORES
-    for (let i = 0, lista = ''; pontos[i] != undefined; i++) {
+    for (let i = 0, lista = ''; pontos[i] != undefined; i++)
       for (let ii = 0, rank; pontos[ii] != undefined; ii++) {
         if (pontos[i] <=pontos[ii]) {
           rank = pontos[i]
@@ -193,11 +192,11 @@ function menu() {
           pontos[ii] = rank
         }
       }
-    }
+    lista = ''
     //LISTA
-    for (var i = 4, lista = ''; i > -1 ; i--) {
+    for (let i = 4; i > -1 ; i--) {
       if (pontos[i] != undefined)
-        lista = (i + 1) + '° ' + pontos[i] + '\n' + lista
+        lista = (i + 1) + '. ' + pontos[i] + '\n' + lista
     }
   }
   if (lista == '')
@@ -232,7 +231,7 @@ function sobre() {
   fill(0)
   text('OBJETIVO DO JOGO', 300, 40);
   textSize(18);
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão usando sua\nhabilidade de matemática.Enfrentado problemas de soma com frações.', 100, 80);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão no menor\ntempo possivel usando sua habilidade de matemática, enfrentando problemas\nde soma, frações e subtrações.', 100, 80);
   text('', 80, 100);
   stroke('blue');
   strokeWeight(1);
@@ -311,6 +310,8 @@ function fase1() {
   strokeWeight(1)
   fill(0)
   text('XPs: ' + parseInt(XP / 100), 26, 118)
+  if(parseInt(XP / 100)==0)
+    cena = 99
   //////////////////
 
   //CONDIÇÕES
