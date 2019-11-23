@@ -20,7 +20,7 @@ var down = [],
 var downc = [],
   upc = [],
   rc = [],
-  lc = []
+  lc = [];
 
 //Outros
 var bg, player, countframe = 0,
@@ -143,8 +143,8 @@ function draw() {
 function menu() {
   //RESTAURAR DADOS
   if (q1 != 0)
-    q1 = 0, q1 = 0, x = 30, y = 450, XP = 12000, stage++
-
+    q1 = 0, q2 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0
+  
   //TELA
   L++
   S++
@@ -210,14 +210,13 @@ function menu() {
 function regras() {
   //R, G, B
   background('#7FDBFF');
-
   fill(0);
   stroke('grey');
   strokeWeight(1);
   textSize(32);
   text('REGRAS',370, 40)
   textSize(18)
-  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia ou qualquer\noutro tipo de poder que possa lhe dar vantagem no jogo.', 100, 80);
+  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia, se transformar\nno flash, fazer o curso com um carro, usar patins, usar ki, nem, stand, mantra,\nchakara, usar mochiila a jato, usar cavalo, telepoter, truques ou qualquer outro\ntipo de poder que possa lhe dar vantagem\nno jogo.', 100, 80);
 
   textSize(18)
   text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
