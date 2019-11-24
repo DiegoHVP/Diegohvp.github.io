@@ -35,7 +35,7 @@ var bg, player, countframe = 0,
   stage = 0,
   pontos = [],
   lista = '',
-  N = 18; //LEMBRAR var N E A VELOCIDADE, TIRAR DEPOIS
+  N = 5; //LEMBRAR var N E A VELOCIDADE, TIRAR DEPOIS
 
 //SOM
 var sons = []
@@ -74,17 +74,14 @@ function preload() {
   downc[1] = loadImage('https://diegohvp.github.io/Cpl/-Down01.png')
   downc[2] = loadImage('https://diegohvp.github.io/Cpl/-Down02.png')
   downc[3] = loadImage('https://diegohvp.github.io/Cpl/-Down01.png')
-
   upc[0] = loadImage('https://diegohvp.github.io/Cpl/-up00.png')
   upc[1] = loadImage('https://diegohvp.github.io/Cpl/-up01.png')
   upc[2] = loadImage('https://diegohvp.github.io/Cpl/-up02.png')
   upc[3] = loadImage('https://diegohvp.github.io/Cpl/-up01.png')
-
   lc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-l00.png')
   lc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L01.png')
   lc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L02.png')
   lc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-L01.png')
-
   rc[0] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r00.png')
   rc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
   rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
@@ -186,7 +183,7 @@ function menu() {
     //RANKIAR JOGADORES
     for (let i = 0, lista = ''; pontos[i] != undefined; i++)
       for (let ii = 0, rank; pontos[ii] != undefined; ii++) {
-        if (pontos[i] <=pontos[ii]) {
+        if (pontos[i] >pontos[ii]) {
           rank = pontos[i]
           pontos[i] = pontos[ii]
           pontos[ii] = rank
