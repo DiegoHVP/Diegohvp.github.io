@@ -27,15 +27,16 @@ var bg, player, countframe = 0,
   FR = 0,
   caixa = 0,
   q1 = 0,
-  q2 = 0,
+  ask = 0,
   time = 0,
   logo,
   XP = 12000,
   sonsON,
   stage = 0,
   pontos = [],
+  x1,
   lista = '',
-  N = 5; //LEMBRAR var N E A VELOCIDADE, TIRAR DEPOIS
+  N = 15; //LEMBRAR var N E A VELOCIDADE, TIRAR DEPOIS
 
 //SOM
 var sons = []
@@ -94,11 +95,9 @@ function preload() {
   //FUNDO
   bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
 }
-
 function setup() {
   createCanvas(900, 580);
 }
-
 function draw() {
   switch (cena) {
     case 0:
@@ -116,6 +115,15 @@ function draw() {
     case 4:
       fase2();
       break;
+      case 5:
+      fase3()
+      break;
+      case 6:
+      fase4()
+      break;
+      case 7:
+      fase5()
+      break;
     case 99:
       gameover();
       break;
@@ -129,18 +137,15 @@ function draw() {
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
   countframe++
-  if (countframe > 20)
+  if (countframe > 9)
     countframe = 0, FR++
   if (FR > 3)
     FR = 0;
 }
-////////////////////////////////////////////////////////////////////////////////////////////
-//MENU////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////
 function menu() {
   //RESTAURAR DADOS
   if (q1 != 0)
-    q1 = 0, q2 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0
+    q1 = 0, q2 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0, sonsON = undefined
   
   //TELA
   L++
@@ -237,7 +242,6 @@ function sobre() {
     cena = 0
 
 }
-//CONTROLES MENU
 function keyPressed() {
   if (cena == 0) {
     if (keyCode === ENTER)
@@ -258,17 +262,17 @@ function keyPressed() {
       aux = 3;
   }
 }
-////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////
-//FASE 1/////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
 function fase1() {
+  if (pontos[stage]==undefined)
+    pontos[stage] = 0
   //TELA
   background(bg);
   fill('grey');
   stroke('black');
   strokeWeight(1);
+  if(q1>=10)
+    rect(838, 400, 70, 40, 6)
+  else
   rect(838, 400, 40, 40, 20)
   fill('white')
   strokeWeight(5)
@@ -280,7 +284,6 @@ function fase1() {
   textSize(12)
   text('Caixas no\ncaminhão:', 830, 380)
   fill('blue')
-  text('TESTE\nGameOver Q\nGanhou G',78,210)
   textSize(32)
   text(q1, 850, 430)
   fill('black')
@@ -294,7 +297,7 @@ function fase1() {
   text(': O CAMINHÃO DE JOÃOZINHO ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
   textSize(12)
   stroke(255);
-  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 570, 145)
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
   XP--
@@ -302,10 +305,14 @@ function fase1() {
   fill(255)
   stroke('grey')
   strokeWeight(3)
-  rect(20, 90, 105, 40, 10)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('XPs: ' + parseInt(XP / 100), 26, 118)
+  text('SCORE: '+pontos[stage],  725, 118)
+  text('Pontos: ' + parseInt(XP / 100), 26, 118)
   if(parseInt(XP / 100)==0)
     cena = 99
   //////////////////
@@ -410,24 +417,612 @@ function fase1() {
   if (keyCode == 71)
     cena = 100
 }
-//////FIM FASE 1///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////
-//FASE 2////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
 function fase2() {
-  if (x != 30 || y != 450)
-    x = 30, y = 450
-  background('grey');
+  if(x1==undefined)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 0
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+      if(q1>=10)
+    rect(838, 400, 70, 40, 6)
+  else
+  rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(12)
+  text('Caixas no\ncaminhão:', 830, 380)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('02', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': SHREK VIROU CAMNHONEIRO ELE PRECISA DE 3+3+3 VOCÊ\nPODE AJUDA-LO?', 170, 34)
+  textSize(12)
+  stroke(255);
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+
+  ////////////////////
+  XP--
   textSize(22)
-  text('Não a nada aqui', 200, 400);
-  text('pressione ENTER para ir para o menu', 200, 450)
-  if (keyCode == ENTER)
-    cena = 0
+  fill(255)
+  stroke('grey')
+  strokeWeight(3)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
+  strokeWeight(1)
+  fill(0)
+  text('SCORE: '+pontos[stage],  725, 118)
+  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  if(parseInt(XP / 100)==0)
+    cena = 99
+  //////////////////
+
+  //CONDIÇÕES
+  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360)
+    caixa = 1, player = upc[1]
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+    caixa = 0, q1++, player = r[1]
+  if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+    caixa = 1, q1--, player = rc[1]
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+    caixa = 0, player = up[1]
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 9) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(12);
+      text('Pressione S para ir para a proxima fase.', 343, 270);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 9) {
+    cena = 5
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+  //CONTROLES E ANIMAÇÕES
+  if (keyIsDown(LEFT_ARROW) && x > 0) {
+    x -= N;
+    countframe++
+    if (caixa == 0)
+      player = r[FR]
+    if (caixa == 1)
+      player = rc[FR]
+  }
+  if (keyIsDown(RIGHT_ARROW) && x < 730) {
+    x += N;
+    countframe++
+    if (caixa == 0)
+      player = l[FR]
+    if (caixa == 1)
+      player = lc[FR]
+  }
+  if (keyIsDown(UP_ARROW) && y > 350) {
+    y -= N;
+    countframe++
+    if (caixa == 0)
+      player = up[FR]
+    if (caixa == 1)
+      player = upc[FR]
+  }
+  if (keyIsDown(DOWN_ARROW) && y < 500) {
+    y += N;
+    countframe++
+    if (caixa == 0)
+      player = down[FR]
+    if (caixa == 1)
+      player = downc[FR]
+  }
+}
+function fase3() {
+    if(x1!=2)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 2
+  
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+      if(q1>=10)
+    rect(838, 400, 70, 40, 6)
+  else
+  rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(12)
+  text('Caixas no\ncaminhão:', 830, 380)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('03', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': O BATIMAM COMPROU 12-8+2 CAIXAS COM BAT-EQUPAMENTOS,\nQUANTAS CAIXAS DEVEM SER COLOCADAS NO CAMINHÃO?', 170, 34)
+  textSize(12)
+  stroke(255);
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+
+  ////////////////////
+  XP--
+  textSize(22)
+  fill(255)
+  stroke('grey')
+  strokeWeight(3)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
+  strokeWeight(1)
+  fill(0)
+  text('SCORE: '+pontos[stage],  725, 118)
+  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  if(parseInt(XP / 100)==0)
+    cena = 99
+  //////////////////
+
+  //CONDIÇÕES
+  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360)
+    caixa = 1, player = upc[1]
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+    caixa = 0, q1++, player = r[1]
+  if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+    caixa = 1, q1--, player = rc[1]
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+    caixa = 0, player = up[1]
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 6) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(12);
+      text('Pressione S para ir para a proxima fase.', 343, 270);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 6) {
+    cena = 6
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+  //CONTROLES E ANIMAÇÕES
+  if (keyIsDown(LEFT_ARROW) && x > 0) {
+    x -= N;
+    countframe++
+    if (caixa == 0)
+      player = r[FR]
+    if (caixa == 1)
+      player = rc[FR]
+  }
+  if (keyIsDown(RIGHT_ARROW) && x < 730) {
+    x += N;
+    countframe++
+    if (caixa == 0)
+      player = l[FR]
+    if (caixa == 1)
+      player = lc[FR]
+  }
+  if (keyIsDown(UP_ARROW) && y > 350) {
+    y -= N;
+    countframe++
+    if (caixa == 0)
+      player = up[FR]
+    if (caixa == 1)
+      player = upc[FR]
+  }
+  if (keyIsDown(DOWN_ARROW) && y < 500) {
+    y += N;
+    countframe++
+    if (caixa == 0)
+      player = down[FR]
+    if (caixa == 1)
+      player = downc[FR]
+  }
 
 }
-/////FIM FASE 2/////////////////////////////////////////////////////////////////////////
+function fase4() {
+  if(x1!=3)
+    XP=12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 3
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+    if(q1>=10)
+    rect(838, 400, 70, 40, 6)
+  else
+  rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(12)
+  text('Caixas no\ncaminhão:', 830, 380)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('04', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': UM LOJA DE CAIXAS COMPROU 12+12-12 CAIXAS,\nQUANTAS CAIXAS DE VEM IR NO CAMINHÃO?', 170, 34)
+  textSize(12)
+  stroke(255);
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
+  ////////////////////
+  XP--
+  textSize(22)
+  fill(255)
+  stroke('grey')
+  strokeWeight(3)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
+  strokeWeight(1)
+  fill(0)
+  text('SCORE: '+pontos[stage],  725, 118)
+  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  if(parseInt(XP / 100)==0)
+    cena = 99
+  //////////////////
+
+  //CONDIÇÕES
+  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360)
+    caixa = 1, player = upc[1]
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+    caixa = 0, q1++, player = r[1]
+  if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+    caixa = 1, q1--, player = rc[1]
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+    caixa = 0, player = up[1]
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 12) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(12);
+      text('Pressione S para ir para a proxima fase.', 343, 270);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 12) {
+    cena = 7
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+  //CONTROLES E ANIMAÇÕES
+  if (keyIsDown(LEFT_ARROW) && x > 0) {
+    x -= N;
+    countframe++
+    if (caixa == 0)
+      player = r[FR]
+    if (caixa == 1)
+      player = rc[FR]
+  }
+  if (keyIsDown(RIGHT_ARROW) && x < 730) {
+    x += N;
+    countframe++
+    if (caixa == 0)
+      player = l[FR]
+    if (caixa == 1)
+      player = lc[FR]
+  }
+  if (keyIsDown(UP_ARROW) && y > 350) {
+    y -= N;
+    countframe++
+    if (caixa == 0)
+      player = up[FR]
+    if (caixa == 1)
+      player = upc[FR]
+  }
+  if (keyIsDown(DOWN_ARROW) && y < 500) {
+    y += N;
+    countframe++
+    if (caixa == 0)
+      player = down[FR]
+    if (caixa == 1)
+      player = downc[FR]
+  }
+
+}
+function fase5() {
+   if(x1 !=4)
+     XP = 12000,x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4;
+  
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+  if(q1>=10)
+    rect(838, 400, 70, 40, 6)
+  else
+  rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(12)
+  text('Caixas no\ncaminhão:', 830, 380)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('05', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS EM LATA,\nQUANTAS CAXAS DEVEM IR NO CAMINHÃO?', 170, 34)
+  textSize(12)
+  stroke(255);
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+
+  ////////////////////
+  XP--
+  textSize(22)
+  fill(255)
+  stroke('grey')
+  strokeWeight(3)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
+  strokeWeight(1)
+  fill(0)
+  text('SCORE: '+pontos[stage],  725, 118)
+  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  if(parseInt(XP / 100)==0)
+    cena = 99
+  //////////////////
+
+  //CONDIÇÕES
+  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360)
+    caixa = 1, player = upc[1]
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+    caixa = 0, q1++, player = r[1]
+  if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+    caixa = 1, q1--, player = rc[1]
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+    caixa = 0, player = up[1]
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 10) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(12);
+      text('Pressione S para ir para a proxima fase.', 343, 270);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 10) {
+    cena = 100
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+  //CONTROLES E ANIMAÇÕES
+  if (keyIsDown(LEFT_ARROW) && x > 0) {
+    x -= N;
+    countframe++
+    if (caixa == 0)
+      player = r[FR]
+    if (caixa == 1)
+      player = rc[FR]
+  }
+  if (keyIsDown(RIGHT_ARROW) && x < 730) {
+    x += N;
+    countframe++
+    if (caixa == 0)
+      player = l[FR]
+    if (caixa == 1)
+      player = lc[FR]
+  }
+  if (keyIsDown(UP_ARROW) && y > 350) {
+    y -= N;
+    countframe++
+    if (caixa == 0)
+      player = up[FR]
+    if (caixa == 1)
+      player = upc[FR]
+  }
+  if (keyIsDown(DOWN_ARROW) && y < 500) {
+    y += N;
+    countframe++
+    if (caixa == 0)
+      player = down[FR]
+    if (caixa == 1)
+      player = downc[FR]
+  }
+
+
+  if (keyCode == 81)
+    cena = 99
+  if (keyCode == 71)
+    cena = 100
+}
 function gameover() {
   background('grey');
   textSize(45)
