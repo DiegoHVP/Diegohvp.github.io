@@ -294,7 +294,7 @@ function fase1() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': O CAMINHÃO DE JOÃOZINHO ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
+  text(': O CAMINHÃO DE Bill Gates ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
   textSize(12)
   stroke(255);
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
@@ -449,7 +449,7 @@ function fase2() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': SHREK VIROU CAMNHONEIRO ELE PRECISA DE 3+3+3 VOCÊ\nPODE AJUDA-LO?', 170, 34)
+  text(': SHREK VIROU CAMNIHONEIRO ELE PRECISA DE 3+3+3 VOCÊ\nPODE AJUDA-LO?', 170, 34)
   textSize(12)
   stroke(255);
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
@@ -1034,7 +1034,7 @@ function gameover() {
   text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
   text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
   if (keyCode == ENTER)
-    cena = 0
+    cena = 0, x1 = undefined
 
 }
 function win() {
@@ -1050,5 +1050,5 @@ function win() {
   text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
   text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
   if (keyCode == ENTER)
-    cena = 0
+    cena = 0, x1 = undefined
 }
