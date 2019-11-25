@@ -668,7 +668,7 @@ function fase3() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': O BATIMAM COMPROU 12-8+2 CAIXAS COM BAT-EQUPAMENTOS,\nQUANTAS CAIXAS DEVEM SER COLOCADAS NO CAMINHÃO?', 170, 34)
+  text(': O BATIMAM COMPROU 12-8+2 CAIXAS COM BAT-EQUIPAMENTOS,\nQUANTAS CAIXAS DEVEM SER COLOCADAS NO CAMINHÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
