@@ -40,7 +40,21 @@ var bg, player, countframe = 0,
   pontos = [],
   x1,
   lista = '',
-  Speed = 10;
+  Speed = 30;
+
+///////////////////////////TESTE//////////////////////////////////
+var A0 = '',
+  L2 = 20,
+  A = 65,
+  B = 65,
+  B0 = '',
+  C = 65,
+  C0 = '',
+  efeito = 0,
+  efeito0 = 0,
+  FX,
+    jogador = []
+//////////////////////////////////////////////////////////////////
 
 //SOM
 var sons = []
@@ -139,11 +153,21 @@ function draw() {
   //O 'countframe' REGULA O NUMERO
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
-  countframe++
   if (countframe > 9)
     countframe = 0, FR++
   if (FR > 3)
     FR = 0;
+  
+  
+  ////////////////TESTE///////////////////
+  if (efeito > 25)
+    efeito = 0, efeito0++
+  if (efeito0 > 100)
+    efeito0 = 0
+  if (efeito0 % 2 == 0)
+    FX = 0
+  else
+    FX = 255
 }
 function menu() {
   //RESTAURAR DADOS
@@ -195,13 +219,17 @@ function menu() {
           rank = pontos[i]
           pontos[i] = pontos[ii]
           pontos[ii] = rank
+          
+          rank = jogador[i]
+          jogador[i] = jogador[ii]
+          jogador[ii] = rank
         }
       }
     lista = ''
     //LISTA
     for (let i = 4; i > -1 ; i--) {
       if (pontos[i] != undefined)
-        lista = (i + 1) + '. ' + pontos[i] + '\n' + lista
+        lista = (i + 1) + '° '+jogador[i]+' '+ pontos[i] + '\n' + lista
     }
   }
   if (lista == '')
@@ -264,11 +292,33 @@ function keyPressed() {
     if (yo == 455)
       aux = 3;
   }
+  
+  //////////////////////////TESTE/////////////////////////////////////
+  if(cena ==99 || cena ==100) {
+  
+  if (keyIsDown(RIGHT_ARROW) && x < 466)
+    x += 70;
+  if (keyIsDown(LEFT_ARROW) && x > 326)
+    x -= 70;
+  if (x == 326 && keyCode <= 90 && keyCode >= 65)
+    A = keyCode, A0 = String.fromCharCode(A)
+   if (x == 326 && keyCode==8)
+     A0 = ' '
+
+  if (x == 396 && keyCode <= 90 && keyCode >= 65)
+    B = keyCode, B0 = String.fromCharCode(B)
+  if (x == 396 && keyCode==8)
+    B0 = ' '
+
+  if (x == 466 && keyCode <= 90 && keyCode >= 65)
+    C = keyCode, C0 = String.fromCharCode(C)
+  if (x == 466 && keyCode==8)
+    C0 = ' '
+  }
 }
 function fase1() {
   if (pontos[stage]==undefined)
     pontos[stage] = 0, caixa = 0, player = l[1], caixa = 0
-  
   //TELA
   background(bg);
   fill('grey');
@@ -1022,6 +1072,9 @@ function fase5() {
   }
 }
 function gameover() {
+  if(x1!='FIM DO JOGO')
+    x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = ''
+  efeito++
   background('grey');
   textSize(45)
   fill(0)
@@ -1031,11 +1084,30 @@ function gameover() {
   stroke('grey')
   text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
   text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
+
+  
+  /////////////////////////////////TESTE/////////////////////////////
+    text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)  
   if (keyCode == ENTER)
-    cena = 0, x1 = undefined
+    jogador[stage] = A0 + B0 + C0, cena = 0, x1 = undefined
+  noFill(0)
+  strokeWeight(1)
+  stroke(FX)
+  rect(x, y, 70, 50, 10)
+  textSize(16)
+  stroke('grey')
+  fill(0)
+  textSize(32)
+  text(A0, (width * 5) / 14 + 31, height / 2 + 220)
+  text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
+  text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
+  /////////////////////////////////////////////////////////
 
 }
 function win() {
+    if(x1!='FIM DO JOGO')
+    x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = ''
+  efeito++
   background(220);
   textSize(32)
   fill(0)
@@ -1047,6 +1119,20 @@ function win() {
   stroke('grey')
   text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
   text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
+  
+  ////////////////////////TESTE//////////////////////////////
+    text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
   if (keyCode == ENTER)
-    cena = 0, x1 = undefined
+    cena = 0, x1 = undefined, jogador[stage] = A0 + B0 + C0
+  noFill(0)
+  strokeWeight(1)
+  stroke(FX)
+  rect(x, y, 70, 50, 10)
+  textSize(16)
+  stroke('grey')
+  fill(0)
+  textSize(32)
+  text(A0, (width * 5) / 14 + 31, height / 2 + 220)
+  text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
+  text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
 }
