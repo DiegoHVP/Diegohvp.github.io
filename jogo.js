@@ -513,7 +513,7 @@ function fase2() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': SHREK VIROU CAMNIHONEIRO ELE PRECISA DE 3+3+3 CAIXAS VOCÊ\nPODE AJUDA-LO?', 170, 34)
+  text(': SHREK VIROU CAMINHONEIRO ELE PRECISA DE 3+3+3 CAIXAS VOCÊ\nPODE AJUDA-LO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
