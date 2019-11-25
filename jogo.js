@@ -29,6 +29,10 @@ var bg, player, countframe = 0,
   q1 = 0,
   ask = 0,
   time = 0,
+  time0 = 0,
+  time1 = 0,
+    timeF,
+    Score,
   logo,
   XP = 12000,
   sonsON,
@@ -36,7 +40,7 @@ var bg, player, countframe = 0,
   pontos = [],
   x1,
   lista = '',
-  N = 15; //LEMBRAR var N E A VELOCIDADE, TIRAR DEPOIS
+  Speed = 10;
 
 //SOM
 var sons = []
@@ -90,7 +94,6 @@ function preload() {
 
 
   logo = loadImage('https://diegohvp.github.io/logo.png')
-  player = down[0];
 
   //FUNDO
   bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
@@ -245,7 +248,7 @@ function sobre() {
 function keyPressed() {
   if (cena == 0) {
     if (keyCode === ENTER)
-      cena = aux;
+      cena = aux
     if (keyCode === DOWN_ARROW) {
       if (yo >= 315 && yo < 455)
         yo += 70;
@@ -264,7 +267,8 @@ function keyPressed() {
 }
 function fase1() {
   if (pontos[stage]==undefined)
-    pontos[stage] = 0
+    pontos[stage] = 0, caixa = 0, player = l[1], caixa = 0
+  
   //TELA
   background(bg);
   fill('grey');
@@ -294,13 +298,13 @@ function fase1() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': O CAMINHÃO DE Bill Gates ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
+  text(': O CAMINHÃO DE BILL GATES ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
   textSize(12)
   stroke(255);
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP--
+  XP-=1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -344,8 +348,9 @@ function fase1() {
       text('CONSEGUI!!', x + 35, y - 20)
       textSize(32)
       text('PARABENS!!', 345, 259)
-      textSize(12);
-      text('Pressione S para ir para a proxima fase.', 343, 270);
+      textSize(14);
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
       if (sonsON == 1) {
         sonsON = undefined
         sons[0].stop()
@@ -379,7 +384,7 @@ function fase1() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= N;
+    x -= Speed;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -387,7 +392,7 @@ function fase1() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += N;
+    x += Speed;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -395,7 +400,7 @@ function fase1() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= N;
+    y -= Speed;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -403,7 +408,7 @@ function fase1() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += N;
+    y += Speed;
     countframe++
     if (caixa == 0)
       player = down[FR]
@@ -411,15 +416,10 @@ function fase1() {
       player = downc[FR]
   }
 
-
-  if (keyCode == 81)
-    cena = 99
-  if (keyCode == 71)
-    cena = 100
 }
 function fase2() {
   if(x1==undefined)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 0
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 0, player = l[1], caixa = 0
   //TELA
   background(bg);
   fill('grey');
@@ -455,7 +455,7 @@ function fase2() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP--
+  XP-=1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -499,8 +499,9 @@ function fase2() {
       text('CONSEGUI!!', x + 35, y - 20)
       textSize(32)
       text('PARABENS!!', 345, 259)
-      textSize(12);
-      text('Pressione S para ir para a proxima fase.', 343, 270);
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
       if (sonsON == undefined) {
         sonsON = 1
         sons[0].stop()
@@ -534,7 +535,7 @@ function fase2() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= N;
+    x -=Speed;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -542,7 +543,7 @@ function fase2() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += N;
+    x += Speed;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -550,7 +551,7 @@ function fase2() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= N;
+    y -= Speed;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -558,7 +559,7 @@ function fase2() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += N;
+    y += Speed;
     countframe++
     if (caixa == 0)
       player = down[FR]
@@ -568,7 +569,7 @@ function fase2() {
 }
 function fase3() {
     if(x1!=2)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 2
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 2, player = l[1], caixa = 0
   
   //TELA
   background(bg);
@@ -605,7 +606,7 @@ function fase3() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP--
+  XP-=1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -649,8 +650,9 @@ function fase3() {
       text('CONSEGUI!!', x + 35, y - 20)
       textSize(32)
       text('PARABENS!!', 345, 259)
-      textSize(12);
-      text('Pressione S para ir para a proxima fase.', 343, 270);
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
       if (sonsON == undefined) {
         sonsON = 1
         sons[0].stop()
@@ -684,7 +686,7 @@ function fase3() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= N;
+    x -= Speed;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -692,7 +694,7 @@ function fase3() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += N;
+    x += Speed;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -700,7 +702,7 @@ function fase3() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= N;
+    y -= Speed;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -708,7 +710,7 @@ function fase3() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += N;
+    y += Speed;
     countframe++
     if (caixa == 0)
       player = down[FR]
@@ -719,7 +721,7 @@ function fase3() {
 }
 function fase4() {
   if(x1!=3)
-    XP=12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 3
+    XP=12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 3, player = l[1], caixa = 0
   //TELA
   background(bg);
   fill('grey');
@@ -755,7 +757,7 @@ function fase4() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP--
+  XP-=1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -799,8 +801,9 @@ function fase4() {
       text('CONSEGUI!!', x + 35, y - 20)
       textSize(32)
       text('PARABENS!!', 345, 259)
-      textSize(12);
-      text('Pressione S para ir para a proxima fase.', 343, 270);
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
       if (sonsON == undefined) {
         sonsON = 1
         sons[0].stop()
@@ -834,7 +837,7 @@ function fase4() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= N;
+    x -= Speed;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -842,7 +845,7 @@ function fase4() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += N;
+    x += Speed;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -850,7 +853,7 @@ function fase4() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= N;
+    y -= Speed;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -858,7 +861,7 @@ function fase4() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += N;
+    y += Speed;
     countframe++
     if (caixa == 0)
       player = down[FR]
@@ -869,7 +872,7 @@ function fase4() {
 }
 function fase5() {
    if(x1 !=4)
-     XP = 12000,x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4;
+     XP = 12000,x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4, player = l[1], caixa = 0
   
   //TELA
   background(bg);
@@ -906,7 +909,7 @@ function fase5() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP--
+  XP-=1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -950,8 +953,9 @@ function fase5() {
       text('CONSEGUI!!', x + 35, y - 20)
       textSize(32)
       text('PARABENS!!', 345, 259)
-      textSize(12);
-      text('Pressione S para ir para a proxima fase.', 343, 270);
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
       if (sonsON == undefined) {
         sonsON = 1
         sons[0].stop()
@@ -985,7 +989,7 @@ function fase5() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= N;
+    x -= Speed;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -993,7 +997,7 @@ function fase5() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += N;
+    x += Speed;
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -1001,7 +1005,7 @@ function fase5() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= N;
+    y -= Speed;
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -1009,19 +1013,13 @@ function fase5() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += N;
+    y += Speed;
     countframe++
     if (caixa == 0)
       player = down[FR]
     if (caixa == 1)
       player = downc[FR]
   }
-
-
-  if (keyCode == 81)
-    cena = 99
-  if (keyCode == 71)
-    cena = 100
 }
 function gameover() {
   background('grey');
