@@ -147,6 +147,9 @@ function draw() {
     case 7:
       fase5()
       break;
+    case 8:
+      fase6()
+      break;
     case 99:
       gameover();
       break;
@@ -159,7 +162,7 @@ function draw() {
   //O 'countframe' REGULA O NUMERO
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
-  if (countframe > 10)
+  if (countframe > 8)
     countframe = 0, FR++
   if (FR > 3)
     FR = 0;
@@ -255,7 +258,7 @@ function regras() {
   textSize(32);
   text('REGRAS', 370, 40)
   textSize(18)
-  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia, se transformar\nno flash, fazer o curso com um carro, usar patins, usar ki, nem, stand, mantra,\nchakara, usar mochiila a jato, usar cavalo, telepoter, truques ou qualquer outro\ntipo de poder que possa lhe dar vantagem no jogo.', 100, 80);
+  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia, se transformar\nno flash, fazer o curso com um carro, usar patins, usar ki, nem, stand, mantra,\nchakara, usar mochiila a jato, usar cavalo, teleporter, truques ou qualquer outro\ntipo de poder que possa lhe dar vantagem no jogo.', 100, 80);
 
   textSize(18)
   text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
@@ -269,7 +272,7 @@ function sobre() {
   fill(0)
   text('OBJETIVO DO JOGO', 300, 40);
   textSize(18);
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão no menor\ntempo possivel usando sua habilidade de matemática, enfrentando problemas\nde soma e subtrações.', 100, 80);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão no menor\ntempo possivel usando sua habilidade de matemática, enfrentando problemas\nde soma, subtrações e frações.', 100, 80);
   text('', 80, 100);
   stroke('blue');
   strokeWeight(1);
@@ -371,7 +374,10 @@ function fase1() {
   strokeWeight(1)
   fill(0)
   text('Pontos: ' + pontos[stage], 725, 118)
-  text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  if (0*XP==0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
   if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
@@ -507,7 +513,7 @@ function fase2() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': SHREK VIROU CAMNIHONEIRO ELE PRECISA DE 3+3+3 VOCÊ\nPODE AJUDA-LO?', 170, 34)
+  text(': SHREK VIROU CAMNIHONEIRO ELE PRECISA DE 3+3+3 CAIXAS VOCÊ\nPODE AJUDA-LO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
@@ -524,7 +530,10 @@ function fase2() {
   strokeWeight(1)
   fill(0)
   text('Pontos: ' + pontos[stage], 725, 118)
-  text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  if (0*XP==0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
   if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
@@ -676,7 +685,10 @@ function fase3() {
   strokeWeight(1)
   fill(0)
   text('Pontos: ' + pontos[stage], 725, 118)
-  text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  if (0*XP == 0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
   if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
@@ -828,7 +840,10 @@ function fase4() {
   strokeWeight(1)
   fill(0)
   text('Pontos: ' + pontos[stage], 725, 118)
-  text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  if (0*XP == 0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
   if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
@@ -964,7 +979,7 @@ function fase5() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS EM LATA,\nQUANTAS CAXAS DEVEM IR NO CAMINHÃO?', 170, 34)
+  text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS EM LATA,\nQUANTAS CAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
@@ -981,7 +996,10 @@ function fase5() {
   strokeWeight(1)
   fill(0)
   text('Pontos: ' + pontos[stage], 725, 118)
-  text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  if (0*XP == 0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
   if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
@@ -1042,6 +1060,161 @@ function fase5() {
   } else
     time = 0
   if (keyCode == 83 && q1 == 10) {
+    cena = 8
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+  //CONTROLES E ANIMAÇÕES
+  if (keyIsDown(LEFT_ARROW) && x > 0) {
+    x -= Speed;
+    countframe++
+    if (caixa == 0)
+      player = r[FR]
+    if (caixa == 1)
+      player = rc[FR]
+  }
+  if (keyIsDown(RIGHT_ARROW) && x < 730) {
+    x += Speed;
+    countframe++
+    if (caixa == 0)
+      player = l[FR]
+    if (caixa == 1)
+      player = lc[FR]
+  }
+  if (keyIsDown(UP_ARROW) && y > 350) {
+    y -= Speed;
+    countframe++
+    if (caixa == 0)
+      player = up[FR]
+    if (caixa == 1)
+      player = upc[FR]
+  }
+  if (keyIsDown(DOWN_ARROW) && y < 500) {
+    y += Speed;
+    countframe++
+    if (caixa == 0)
+      player = down[FR]
+    if (caixa == 1)
+      player = downc[FR]
+  }
+}
+function fase6() {
+  if (x1 != 5)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 5, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+  if (q1 >= 10)
+    rect(838, 400, 70, 40, 6)
+  else
+    rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(14)
+  text('Caixas no\ncaminhão:', 823, 367)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('06', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': A BARBIE COMPROU A METADE DE 3+3+10 CAIXAS DE SAPATOS QUANTAS\nCAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
+  textSize(13)
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+
+  ////////////////////
+  XP -= 1.5
+  textSize(22)
+  fill(255)
+  stroke('grey')
+  strokeWeight(3)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
+  strokeWeight(1)
+  fill(0)
+  text('Pontos: ' + pontos[stage], 725, 118)
+  if (0*XP == 0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
+  if (parseInt(XP / 100) == 0)
+    cena = 99
+  //////////////////
+
+  //CONDIÇÕES
+  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
+    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
+  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+  caixa = 1, q1--, player = rc[1], sons[7].play()
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+    caixa = 0, player = up[1], sons[6].play()
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 8) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+        sons[4].setVolume(0.03)
+        XP = 'STOP'
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 8) {
     cena = 100
   }
 
@@ -1157,9 +1330,9 @@ function intro() {
   fill(FX)
   text('!!FIQUE ATENTO!!', 300, 40);
   textSize(18);
+   strokeWeight(0)
   fill(0)
-  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe\nos pontos referente ao tempo restante, caso o tempo cheguem a 0 (zero) você perde.\nLembrando que não há transição de tela entre as quetões então...\nSeja rápido :)\n\nCONTROLES:\nZ para pegar caixa do deposito para o caminhão.\nX para pegar do caminhão para o deposito.\nESPAÇO para verifica a resposta.\nS para ir para a próxima fase.', 100, 80);
-  text('', 80, 100);
+  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe os pontos\nreferente ao tempo restante, CASO O TEMPO CHEGUE A 0 (ZERO) VOCÊ PERDE.\nLembrando que não há transição de tela entre as questões, então...\nSeja rápido :D\n\nCONTROLES:\nZ para pegar caixa do deposito para o caminhão.\nX para pegar do caminhão para o deposito.\nESPAÇO para verifica a resposta.\nS para ir para a próxima fase.\n\nPS: Os pontos só serão adicionados se você verificar a resposta!', 100, 80);
   stroke('grey');
   strokeWeight(1);
   textSize(18)
