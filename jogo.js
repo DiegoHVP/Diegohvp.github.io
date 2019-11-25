@@ -68,17 +68,14 @@ function preload() {
   down[1] = loadImage('https://diegohvp.github.io/pl/Down01.png')
   down[2] = loadImage('https://diegohvp.github.io/pl/Down02.png')
   down[3] = loadImage('https://diegohvp.github.io/pl/Down03.png')
-
   up[0] = loadImage('https://diegohvp.github.io/pl/up00.png')
   up[1] = loadImage('https://diegohvp.github.io/pl/up01.png')
   up[2] = loadImage('https://diegohvp.github.io/pl/up02.png')
   up[3] = loadImage('https://diegohvp.github.io/pl/up03.png')
-
   l[0] = loadImage('https://diegohvp.github.io/pl/L00.png')
   l[1] = loadImage('https://diegohvp.github.io/pl/L01.png')
   l[2] = loadImage('https://diegohvp.github.io/pl/L02.png')
   l[3] = loadImage('https://diegohvp.github.io/pl/L03.png')
-
   r[0] = loadImage('https://diegohvp.github.io/pl/R00.png')
   r[1] = loadImage('https://diegohvp.github.io/pl/R01.png')
   r[2] = loadImage('https://diegohvp.github.io/pl/R02.png')
@@ -102,18 +99,14 @@ function preload() {
   rc[1] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
   rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
   rc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
-
-
-  logo = loadImage('https://diegohvp.github.io/logo.png')
-
+  
   //FUNDO
-  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
+  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png')
+  logo = loadImage('https://diegohvp.github.io/logo.png');
 }
-
 function setup() {
   createCanvas(900, 580);
 }
-
 function draw() {
   switch (cena) {
     case -1:
@@ -171,7 +164,6 @@ function draw() {
   else
     FX = 255
 }
-
 function menu() {
   //RESTAURAR DADOS
   if (q1 != 0)
@@ -243,7 +235,6 @@ function menu() {
   strokeWeight(1)
   text('RANKING:\n\n' + lista, 40, 340)
 }
-
 function regras() {
   //R, G, B
   background('#7FDBFF');
@@ -261,7 +252,6 @@ function regras() {
     cena = 0
 
 }
-
 function sobre() {
   background(80, 80, 200);
   textSize(32);
@@ -278,7 +268,6 @@ function sobre() {
     cena = 0
 
 }
-
 function keyPressed() {
   if (cena == 0) {
     if (keyCode === ENTER)
@@ -322,7 +311,6 @@ function keyPressed() {
       C0 = ' '
   }
 }
-
 function fase1() {
   if (pontos[stage] == undefined)
     pontos[stage] = 0, caixa = 0, player = l[1], caixa = 0
@@ -474,7 +462,6 @@ function fase1() {
   }
 
 }
-
 function fase2() {
   if (x1 == undefined)
     XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 0, player = l[1], caixa = 0
@@ -625,7 +612,6 @@ function fase2() {
       player = downc[FR]
   }
 }
-
 function fase3() {
   if (x1 != 2)
     XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 2, player = l[1], caixa = 0
@@ -778,7 +764,6 @@ function fase3() {
   }
 
 }
-
 function fase4() {
   if (x1 != 3)
     XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 3, player = l[1], caixa = 0
@@ -930,7 +915,6 @@ function fase4() {
   }
 
 }
-
 function fase5() {
   if (x1 != 4)
     XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4, player = l[1], caixa = 0
@@ -1082,7 +1066,6 @@ function fase5() {
       player = downc[FR]
   }
 }
-
 function gameover() {
   if (x1 != 'FIM DO JOGO')
     x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = ''
@@ -1116,7 +1099,6 @@ function gameover() {
   /////////////////////////////////////////////////////////
 
 }
-
 function win() {
   if (x1 != 'FIM DO JOGO')
     x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = ''
@@ -1149,7 +1131,6 @@ function win() {
   text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
   text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
 }
-
 function intro() {
   background(170)
   textSize(32);
