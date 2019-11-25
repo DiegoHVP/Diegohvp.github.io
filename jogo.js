@@ -40,7 +40,7 @@ var bg, player, countframe = 0,
   pontos = [],
   x1,
   lista = '',
-  Speed = 30;
+  Speed = 9;
 
 ///////////////////////////TESTE//////////////////////////////////
 var A0 = '',
@@ -153,7 +153,7 @@ function draw() {
   //O 'countframe' REGULA O NUMERO
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
-  if (countframe > 9)
+  if (countframe > 13)
     countframe = 0, FR++
   if (FR > 3)
     FR = 0;
