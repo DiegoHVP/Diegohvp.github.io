@@ -10,7 +10,7 @@ var x = 30,
   y = 450;
 //TELA
 var cena = 0,
-  aux = 1;
+  aux = -1;
 //Sprites sem caixa
 var down = [],
   up = [],
@@ -29,10 +29,6 @@ var bg, player, countframe = 0,
   q1 = 0,
   ask = 0,
   time = 0,
-  time0 = 0,
-  time1 = 0,
-    timeF,
-    Score,
   logo,
   XP = 12000,
   sonsON,
@@ -117,6 +113,9 @@ function setup() {
 }
 function draw() {
   switch (cena) {
+    case -1:
+      intro()
+      break;
     case 0:
       menu();
       break;
@@ -153,7 +152,7 @@ function draw() {
   //O 'countframe' REGULA O NUMERO
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
-  if (countframe > 13)
+  if (countframe >10)
     countframe = 0, FR++
   if (FR > 3)
     FR = 0;
@@ -249,7 +248,7 @@ function regras() {
   textSize(32);
   text('REGRAS',370, 40)
   textSize(18)
-  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia, se transformar\nno flash, fazer o curso com um carro, usar patins, usar ki, nem, stand, mantra,\nchakara, usar mochiila a jato, usar cavalo, telepoter, truques ou qualquer outro\ntipo de poder que possa lhe dar vantagem\nno jogo.', 100, 80);
+  text('O Jogador não pode conjurar magias, lançar raios, usar telepatia, se transformar\nno flash, fazer o curso com um carro, usar patins, usar ki, nem, stand, mantra,\nchakara, usar mochiila a jato, usar cavalo, telepoter, truques ou qualquer outro\ntipo de poder que possa lhe dar vantagem no jogo.', 100, 80);
 
   textSize(18)
   text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
@@ -263,7 +262,7 @@ function sobre() {
   fill(0)
   text('OBJETIVO DO JOGO', 300, 40);
   textSize(18);
-  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão no menor\ntempo possivel usando sua habilidade de matemática, enfrentando problemas\nde soma, frações e subtrações.', 100, 80);
+  text('O jogo consiste em ajudar o caminhoneiro a encher o caminhão no menor\ntempo possivel usando sua habilidade de matemática, enfrentando problemas\nde soma e subtrações.', 100, 80);
   text('', 80, 100);
   stroke('blue');
   strokeWeight(1);
@@ -288,7 +287,7 @@ function keyPressed() {
     if (yo == 385)
       aux = 2;
     if (yo == 315)
-      aux = 1;
+      aux = -1;
     if (yo == 455)
       aux = 3;
   }
@@ -365,8 +364,8 @@ function fase1() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('SCORE: '+pontos[stage],  725, 118)
-  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  text('Pontos: '+pontos[stage],  725, 118)
+  text('Tempo: ' + parseInt(XP / 100), 26, 118)
   if(parseInt(XP / 100)==0)
     cena = 99
   //////////////////
@@ -516,8 +515,8 @@ function fase2() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('SCORE: '+pontos[stage],  725, 118)
-  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  text('Pontos: '+pontos[stage],  725, 118)
+  text('Tempo: ' + parseInt(XP / 100), 26, 118)
   if(parseInt(XP / 100)==0)
     cena = 99
   //////////////////
@@ -667,8 +666,8 @@ function fase3() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('SCORE: '+pontos[stage],  725, 118)
-  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  text('Pontos: '+pontos[stage],  725, 118)
+  text('Tempo: ' + parseInt(XP / 100), 26, 118)
   if(parseInt(XP / 100)==0)
     cena = 99
   //////////////////
@@ -818,8 +817,8 @@ function fase4() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('SCORE: '+pontos[stage],  725, 118)
-  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  text('Pontos: '+pontos[stage],  725, 118)
+  text('Tempo: ' + parseInt(XP / 100), 26, 118)
   if(parseInt(XP / 100)==0)
     cena = 99
   //////////////////
@@ -970,8 +969,8 @@ function fase5() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('SCORE: '+pontos[stage],  725, 118)
-  text('Pontos: ' + parseInt(XP / 100), 26, 118)
+  text('Pontos: '+pontos[stage],  725, 118)
+  text('Tempo: ' + parseInt(XP / 100), 26, 118)
   if(parseInt(XP / 100)==0)
     cena = 99
   //////////////////
@@ -1135,4 +1134,22 @@ function win() {
   text(A0, (width * 5) / 14 + 31, height / 2 + 220)
   text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
   text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
+}
+function intro() {
+  background(170)
+  textSize(32);
+  efeito++
+  fill(FX)
+  text('!!FIQUE ATENTO!!', 300, 40);
+  textSize(18);
+  fill(0)
+  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe\nos pontos referente ao tempo restante, caso o tempo cheguem a 0 (zero) você perde.', 100, 80);
+  text('', 80, 100);
+  stroke('grey');
+  strokeWeight(1);
+  textSize(18)
+  fill(0)
+  text('Pressione S para para começar.', 320, 500);
+  if (keyCode==83)
+    cena = 1
 }
