@@ -39,17 +39,18 @@ var bg, player, countframe = 0,
   Speed = 9;
 
 ///////////////////////////TESTE//////////////////////////////////
-var A0 = '',
+var
   L2 = 20,
   A = 65,
   B = 65,
-  B0 = '',
   C = 65,
+  A0 = '',
+  B0 = '',
   C0 = '',
   efeito = 0,
   efeito0 = 0,
   FX,
-    jogador = []
+  jogador = []
 //////////////////////////////////////////////////////////////////
 
 //SOM
@@ -108,9 +109,11 @@ function preload() {
   //FUNDO
   bg = loadImage('https://diegohvp.github.io/ceneraio (1).png');
 }
+
 function setup() {
   createCanvas(900, 580);
 }
+
 function draw() {
   switch (cena) {
     case -1:
@@ -131,13 +134,13 @@ function draw() {
     case 4:
       fase2();
       break;
-      case 5:
+    case 5:
       fase3()
       break;
-      case 6:
+    case 6:
       fase4()
       break;
-      case 7:
+    case 7:
       fase5()
       break;
     case 99:
@@ -152,12 +155,12 @@ function draw() {
   //O 'countframe' REGULA O NUMERO
   //DE FRAMES NOS SPRITES
   //O 'FR' EA VARIACAO DOS FRAMES
-  if (countframe >10)
+  if (countframe > 10)
     countframe = 0, FR++
   if (FR > 3)
     FR = 0;
-  
-  
+
+
   ////////////////TESTE///////////////////
   if (efeito > 25)
     efeito = 0, efeito0++
@@ -168,11 +171,12 @@ function draw() {
   else
     FX = 255
 }
+
 function menu() {
   //RESTAURAR DADOS
   if (q1 != 0)
     q1 = 0, q2 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0, sonsON = undefined
-  
+
   //TELA
   L++
   S++
@@ -214,11 +218,11 @@ function menu() {
     //RANKIAR JOGADORES
     for (let i = 0, lista = ''; pontos[i] != undefined; i++)
       for (let ii = 0, rank; pontos[ii] != undefined; ii++) {
-        if (pontos[i] >pontos[ii]) {
+        if (pontos[i] > pontos[ii]) {
           rank = pontos[i]
           pontos[i] = pontos[ii]
           pontos[ii] = rank
-          
+
           rank = jogador[i]
           jogador[i] = jogador[ii]
           jogador[ii] = rank
@@ -226,9 +230,9 @@ function menu() {
       }
     lista = ''
     //LISTA
-    for (let i = 4; i > -1 ; i--) {
+    for (let i = 4; i > -1; i--) {
       if (pontos[i] != undefined)
-        lista = (i + 1) + '° '+jogador[i]+' '+ pontos[i] + '\n' + lista
+        lista = (i + 1) + '° ' + jogador[i] + ' ' + pontos[i] + '\n' + lista
     }
   }
   if (lista == '')
@@ -239,6 +243,7 @@ function menu() {
   strokeWeight(1)
   text('RANKING:\n\n' + lista, 40, 340)
 }
+
 function regras() {
   //R, G, B
   background('#7FDBFF');
@@ -246,7 +251,7 @@ function regras() {
   stroke('grey');
   strokeWeight(1);
   textSize(32);
-  text('REGRAS',370, 40)
+  text('REGRAS', 370, 40)
   textSize(18)
   text('O Jogador não pode conjurar magias, lançar raios, usar telepatia, se transformar\nno flash, fazer o curso com um carro, usar patins, usar ki, nem, stand, mantra,\nchakara, usar mochiila a jato, usar cavalo, telepoter, truques ou qualquer outro\ntipo de poder que possa lhe dar vantagem no jogo.', 100, 80);
 
@@ -256,6 +261,7 @@ function regras() {
     cena = 0
 
 }
+
 function sobre() {
   background(80, 80, 200);
   textSize(32);
@@ -272,6 +278,7 @@ function sobre() {
     cena = 0
 
 }
+
 function keyPressed() {
   if (cena == 0) {
     if (keyCode === ENTER)
@@ -291,42 +298,43 @@ function keyPressed() {
     if (yo == 455)
       aux = 3;
   }
-  
+
   //////////////////////////TESTE/////////////////////////////////////
-  if(cena ==99 || cena ==100) {
-  
-  if (keyIsDown(RIGHT_ARROW) && x < 466)
-    x += 70;
-  if (keyIsDown(LEFT_ARROW) && x > 326)
-    x -= 70;
-  if (x == 326 && keyCode <= 90 && keyCode >= 65)
-    A = keyCode, A0 = String.fromCharCode(A)
-   if (x == 326 && keyCode==8)
-     A0 = ' '
+  if (cena == 99 || cena == 100) {
 
-  if (x == 396 && keyCode <= 90 && keyCode >= 65)
-    B = keyCode, B0 = String.fromCharCode(B)
-  if (x == 396 && keyCode==8)
-    B0 = ' '
+    if (keyIsDown(RIGHT_ARROW) && x < 466)
+      x += 70;
+    if (keyIsDown(LEFT_ARROW) && x > 326)
+      x -= 70;
+    if (x == 326 && keyCode <= 90 && keyCode >= 65)
+      A = keyCode, A0 = String.fromCharCode(A)
+    if (x == 326 && keyCode == 8)
+      A0 = ' '
 
-  if (x == 466 && keyCode <= 90 && keyCode >= 65)
-    C = keyCode, C0 = String.fromCharCode(C)
-  if (x == 466 && keyCode==8)
-    C0 = ' '
+    if (x == 396 && keyCode <= 90 && keyCode >= 65)
+      B = keyCode, B0 = String.fromCharCode(B)
+    if (x == 396 && keyCode == 8)
+      B0 = ' '
+
+    if (x == 466 && keyCode <= 90 && keyCode >= 65)
+      C = keyCode, C0 = String.fromCharCode(C)
+    if (x == 466 && keyCode == 8)
+      C0 = ' '
   }
 }
+
 function fase1() {
-  if (pontos[stage]==undefined)
+  if (pontos[stage] == undefined)
     pontos[stage] = 0, caixa = 0, player = l[1], caixa = 0
   //TELA
   background(bg);
   fill('grey');
   stroke('black');
   strokeWeight(1);
-  if(q1>=10)
+  if (q1 >= 10)
     rect(838, 400, 70, 40, 6)
   else
-  rect(838, 400, 40, 40, 20)
+    rect(838, 400, 40, 40, 20)
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
@@ -353,7 +361,7 @@ function fase1() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP-=1.5
+  XP -= 1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -364,9 +372,9 @@ function fase1() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('Pontos: '+pontos[stage],  725, 118)
+  text('Pontos: ' + pontos[stage], 725, 118)
   text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  if(parseInt(XP / 100)==0)
+  if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
 
@@ -466,18 +474,19 @@ function fase1() {
   }
 
 }
+
 function fase2() {
-  if(x1==undefined)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 0, player = l[1], caixa = 0
+  if (x1 == undefined)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 0, player = l[1], caixa = 0
   //TELA
   background(bg);
   fill('grey');
   stroke('black');
   strokeWeight(1);
-      if(q1>=10)
+  if (q1 >= 10)
     rect(838, 400, 70, 40, 6)
   else
-  rect(838, 400, 40, 40, 20)
+    rect(838, 400, 40, 40, 20)
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
@@ -504,7 +513,7 @@ function fase2() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP-=1.5
+  XP -= 1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -515,9 +524,9 @@ function fase2() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('Pontos: '+pontos[stage],  725, 118)
+  text('Pontos: ' + pontos[stage], 725, 118)
   text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  if(parseInt(XP / 100)==0)
+  if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
 
@@ -584,7 +593,7 @@ function fase2() {
 
   //CONTROLES E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -=Speed;
+    x -= Speed;
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -616,19 +625,20 @@ function fase2() {
       player = downc[FR]
   }
 }
+
 function fase3() {
-    if(x1!=2)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 2, player = l[1], caixa = 0
-  
+  if (x1 != 2)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 2, player = l[1], caixa = 0
+
   //TELA
   background(bg);
   fill('grey');
   stroke('black');
   strokeWeight(1);
-      if(q1>=10)
+  if (q1 >= 10)
     rect(838, 400, 70, 40, 6)
   else
-  rect(838, 400, 40, 40, 20)
+    rect(838, 400, 40, 40, 20)
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
@@ -655,7 +665,7 @@ function fase3() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP-=1.5
+  XP -= 1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -666,9 +676,9 @@ function fase3() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('Pontos: '+pontos[stage],  725, 118)
+  text('Pontos: ' + pontos[stage], 725, 118)
   text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  if(parseInt(XP / 100)==0)
+  if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
 
@@ -768,18 +778,19 @@ function fase3() {
   }
 
 }
+
 function fase4() {
-  if(x1!=3)
-    XP=12000, x = 30, y = 450, q1 = 0, sonsON=undefined, x1 = 3, player = l[1], caixa = 0
+  if (x1 != 3)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 3, player = l[1], caixa = 0
   //TELA
   background(bg);
   fill('grey');
   stroke('black');
   strokeWeight(1);
-    if(q1>=10)
+  if (q1 >= 10)
     rect(838, 400, 70, 40, 6)
   else
-  rect(838, 400, 40, 40, 20)
+    rect(838, 400, 40, 40, 20)
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
@@ -800,13 +811,13 @@ function fase4() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': UM LOJA DE CAIXAS COMPROU 12+12-12 CAIXAS,\nQUANTAS CAIXAS DE VEM IR NO CAMINHÃO?', 170, 34)
+  text(': UM LOJA DE CAIXAS COMPROU 12+12-12 CAIXAS, QUANTAS CAIXAS\nDEVEM IR NO CAMINHÃO?', 170, 34)
   textSize(12)
   stroke(255);
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP-=1.5
+  XP -= 1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -817,9 +828,9 @@ function fase4() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('Pontos: '+pontos[stage],  725, 118)
+  text('Pontos: ' + pontos[stage], 725, 118)
   text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  if(parseInt(XP / 100)==0)
+  if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
 
@@ -919,19 +930,20 @@ function fase4() {
   }
 
 }
+
 function fase5() {
-   if(x1 !=4)
-     XP = 12000,x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4, player = l[1], caixa = 0
-  
+  if (x1 != 4)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4, player = l[1], caixa = 0
+
   //TELA
   background(bg);
   fill('grey');
   stroke('black');
   strokeWeight(1);
-  if(q1>=10)
+  if (q1 >= 10)
     rect(838, 400, 70, 40, 6)
   else
-  rect(838, 400, 40, 40, 20)
+    rect(838, 400, 40, 40, 20)
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
@@ -958,7 +970,7 @@ function fase5() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   ////////////////////
-  XP-=1.5
+  XP -= 1.5
   textSize(22)
   fill(255)
   stroke('grey')
@@ -969,9 +981,9 @@ function fase5() {
   rect(20, 90, 145, 40, 10)
   strokeWeight(1)
   fill(0)
-  text('Pontos: '+pontos[stage],  725, 118)
+  text('Pontos: ' + pontos[stage], 725, 118)
   text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  if(parseInt(XP / 100)==0)
+  if (parseInt(XP / 100) == 0)
     cena = 99
   //////////////////
 
@@ -1070,8 +1082,9 @@ function fase5() {
       player = downc[FR]
   }
 }
+
 function gameover() {
-  if(x1!='FIM DO JOGO')
+  if (x1 != 'FIM DO JOGO')
     x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = ''
   efeito++
   background('grey');
@@ -1084,9 +1097,9 @@ function gameover() {
   text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
   text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
 
-  
+
   /////////////////////////////////TESTE/////////////////////////////
-    text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)  
+  text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
   if (keyCode == ENTER)
     jogador[stage] = A0 + B0 + C0, cena = 0, x1 = undefined
   noFill(0)
@@ -1103,8 +1116,9 @@ function gameover() {
   /////////////////////////////////////////////////////////
 
 }
+
 function win() {
-    if(x1!='FIM DO JOGO')
+  if (x1 != 'FIM DO JOGO')
     x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = ''
   efeito++
   background(220);
@@ -1118,9 +1132,9 @@ function win() {
   stroke('grey')
   text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
   text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
-  
+
   ////////////////////////TESTE//////////////////////////////
-    text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
+  text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
   if (keyCode == ENTER)
     cena = 0, x1 = undefined, jogador[stage] = A0 + B0 + C0
   noFill(0)
@@ -1135,6 +1149,7 @@ function win() {
   text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
   text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
 }
+
 function intro() {
   background(170)
   textSize(32);
@@ -1143,13 +1158,13 @@ function intro() {
   text('!!FIQUE ATENTO!!', 300, 40);
   textSize(18);
   fill(0)
-  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe\nos pontos referente ao tempo restante, caso o tempo cheguem a 0 (zero) você perde.', 100, 80);
+  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe\nos pontos referente ao tempo restante, caso o tempo cheguem a 0 (zero) você perde.\nLembrando que não há transição de tela entre as quetões então\nSeja rápido :)', 100, 80);
   text('', 80, 100);
   stroke('grey');
   strokeWeight(1);
   textSize(18)
   fill(0)
   text('Pressione S para para começar.', 320, 500);
-  if (keyCode==83)
+  if (keyCode == 83)
     cena = 1
 }
