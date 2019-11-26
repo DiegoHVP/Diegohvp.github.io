@@ -36,7 +36,7 @@ var bg, player, countframe = 0,
   pontos = [],
   x1,
   lista = '',
-  Speed = 9;
+  Speed = 20;
 
 //INSERIR NOME
 var
@@ -150,6 +150,18 @@ function draw() {
     case 8:
       fase6()
       break;
+      case 9:
+      fase7()
+      break;
+      case 10:
+      fase8()
+      break;
+      case 11:
+      fase9()
+      break;
+      case 12:
+      fase10()
+      break;
     case 99:
       gameover();
       break;
@@ -179,6 +191,8 @@ function draw() {
     FX = 255
 }
 function menu() {
+  //randomizar questões
+  
   //RESTAURAR DADOS
   if (q1 != 0 || x != 30 || y != 450)
     q1 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0, sonsON = undefined, x1 = undefined, sons[3].stop(), sons[5].stop()
@@ -211,7 +225,7 @@ function menu() {
   stroke(0);
   text('Jogar', 390, 355);
   text('Regras', 376, 425);
-  text('Sobre', 386, 498);
+  text('Sobre', 385, 496);
 
   noFill();
   strokeWeight(5)
@@ -327,7 +341,7 @@ function keyPressed() {
 }
 function fase1() {
   if (pontos[stage] == undefined)
-    pontos[stage] = 0, caixa = 0, player = l[1], caixa = 0, sons[0].stop(), sons[4].setVolume(0.08), sons[4].play()
+    pontos[stage] = 0, caixa = 0, player = l[1], caixa = 0, sons[0].stop(), sons[4].setVolume(0.08), sons[4].play(), x1 = undefined
   //TELA
   background(bg);
   fill('grey');
@@ -340,7 +354,7 @@ function fase1() {
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65);
+  rect(70, 11, 800, 65, 25);
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -351,7 +365,7 @@ function fase1() {
   text(q1, 850, 430)
   fill('black')
   textSize(16)
-  text('Questão ', 78, 34)
+  text('Questão ', 83, 34)
   fill('red')
   text('01', 150, 34)
   fill(0);
@@ -361,36 +375,8 @@ function fase1() {
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
-  ////////////////////
-  XP -= 1.5
-  textSize(22)
-  fill(255)
-  stroke('grey')
-  strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
-  strokeWeight(1)
-  fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0*XP==0)
-    text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  else
-    text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
-    cena = 99
-  //////////////////
-
-  //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
-    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-  caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0, player = up[1], sons[6].play()
+  base();
+  
 
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
@@ -447,38 +433,6 @@ function fase1() {
   image(player, x, y, 80, 150);
 
   //CONTROLES E ANIMAÇÕES
-  if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = r[FR]
-    if (caixa == 1)
-      player = rc[FR]
-  }
-  if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += Speed;
-    countframe++
-    if (caixa == 0)
-      player = l[FR]
-    if (caixa == 1)
-      player = lc[FR]
-  }
-  if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = up[FR]
-    if (caixa == 1)
-      player = upc[FR]
-  }
-  if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += Speed;
-    countframe++
-    if (caixa == 0)
-      player = down[FR]
-    if (caixa == 1)
-      player = downc[FR]
-  }
 
 }
 function fase2() {
@@ -496,7 +450,7 @@ function fase2() {
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65);
+  rect(70, 11, 800, 65, 25);
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -517,37 +471,7 @@ function fase2() {
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
-  ////////////////////
-  XP -= 1.5
-  textSize(22)
-  fill(255)
-  stroke('grey')
-  strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
-  strokeWeight(1)
-  fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0*XP==0)
-    text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  else
-    text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
-    cena = 99
-  //////////////////
-
-  //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
-    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-  caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0, player = up[1], sons[6].play()
-
+ base()
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
     if (q1 == 9) {
@@ -601,39 +525,6 @@ function fase2() {
   //PLAYER
   image(player, x, y, 80, 150);
 
-  //CONTROLES E ANIMAÇÕES
-  if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = r[FR]
-    if (caixa == 1)
-      player = rc[FR]
-  }
-  if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += Speed;
-    countframe++
-    if (caixa == 0)
-      player = l[FR]
-    if (caixa == 1)
-      player = lc[FR]
-  }
-  if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = up[FR]
-    if (caixa == 1)
-      player = upc[FR]
-  }
-  if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += Speed;
-    countframe++
-    if (caixa == 0)
-      player = down[FR]
-    if (caixa == 1)
-      player = downc[FR]
-  }
 }
 function fase3() {
   if (x1 != 2)
@@ -651,7 +542,7 @@ function fase3() {
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65);
+  rect(70, 11, 800, 65, 25);
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -671,37 +562,6 @@ function fase3() {
   text(': O BATIMAM COMPROU 12-8+2 CAIXAS COM BAT-EQUIPAMENTOS,\nQUANTAS CAIXAS DEVEM SER COLOCADAS NO CAMINHÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
-
-  ////////////////////
-  XP -= 1.5
-  textSize(22)
-  fill(255)
-  stroke('grey')
-  strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
-  strokeWeight(1)
-  fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0*XP == 0)
-    text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  else
-    text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
-    cena = 99
-  //////////////////
-
-  //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
-    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-  caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0, player = up[1], sons[6].play()
 
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
@@ -751,44 +611,10 @@ function fase3() {
   if (keyCode == 83 && q1 == 6) {
     cena = 6
   }
-
+base()
 
   //PLAYER
   image(player, x, y, 80, 150);
-
-  //CONTROLES E ANIMAÇÕES
-  if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = r[FR]
-    if (caixa == 1)
-      player = rc[FR]
-  }
-  if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += Speed;
-    countframe++
-    if (caixa == 0)
-      player = l[FR]
-    if (caixa == 1)
-      player = lc[FR]
-  }
-  if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = up[FR]
-    if (caixa == 1)
-      player = upc[FR]
-  }
-  if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += Speed;
-    countframe++
-    if (caixa == 0)
-      player = down[FR]
-    if (caixa == 1)
-      player = downc[FR]
-  }
 
 }
 function fase4() {
@@ -806,7 +632,7 @@ function fase4() {
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65);
+  rect(70, 11, 800, 65, 25);
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -827,36 +653,7 @@ function fase4() {
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
-  ////////////////////
-  XP -= 1.5
-  textSize(22)
-  fill(255)
-  stroke('grey')
-  strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
-  strokeWeight(1)
-  fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0*XP == 0)
-    text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  else
-    text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
-    cena = 99
-  //////////////////
-
-  //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
-    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-  caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0, player = up[1], sons[6].play()
+base()
 
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
@@ -910,41 +707,6 @@ function fase4() {
 
   //PLAYER
   image(player, x, y, 80, 150);
-
-  //CONTROLES E ANIMAÇÕES
-  if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = r[FR]
-    if (caixa == 1)
-      player = rc[FR]
-  }
-  if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += Speed;
-    countframe++
-    if (caixa == 0)
-      player = l[FR]
-    if (caixa == 1)
-      player = lc[FR]
-  }
-  if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = up[FR]
-    if (caixa == 1)
-      player = upc[FR]
-  }
-  if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += Speed;
-    countframe++
-    if (caixa == 0)
-      player = down[FR]
-    if (caixa == 1)
-      player = downc[FR]
-  }
-
 }
 function fase5() {
   if (x1 != 4)
@@ -962,7 +724,7 @@ function fase5() {
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65);
+  rect(70, 11, 800, 65, 25);
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -982,38 +744,7 @@ function fase5() {
   text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS EM LATA,\nQUANTAS CAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
-
-  ////////////////////
-  XP -= 1.5
-  textSize(22)
-  fill(255)
-  stroke('grey')
-  strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
-  strokeWeight(1)
-  fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0*XP == 0)
-    text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  else
-    text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
-    cena = 99
-  //////////////////
-
-  //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
-    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-  caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0, player = up[1], sons[6].play()
-
+  base()
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
     if (q1 == 10) {
@@ -1067,39 +798,6 @@ function fase5() {
   //PLAYER
   image(player, x, y, 80, 150);
 
-  //CONTROLES E ANIMAÇÕES
-  if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = r[FR]
-    if (caixa == 1)
-      player = rc[FR]
-  }
-  if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += Speed;
-    countframe++
-    if (caixa == 0)
-      player = l[FR]
-    if (caixa == 1)
-      player = lc[FR]
-  }
-  if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= Speed;
-    countframe++
-    if (caixa == 0)
-      player = up[FR]
-    if (caixa == 1)
-      player = upc[FR]
-  }
-  if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += Speed;
-    countframe++
-    if (caixa == 0)
-      player = down[FR]
-    if (caixa == 1)
-      player = downc[FR]
-  }
 }
 function fase6() {
   if (x1 != 5)
@@ -1117,7 +815,7 @@ function fase6() {
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65);
+  rect(70, 11, 800, 65, 25);
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -1134,44 +832,14 @@ function fase6() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': A BARBIE COMPROU A METADE DE 3+3+10 CAIXAS DE SAPATOS QUANTAS\nCAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
+  text(': A BARBIE COMPROU METADE DE 6 (OU 6/2) CAIXAS DE\NSAPATOS, QUANTAS CAIXAS SÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
-  ////////////////////
-  XP -= 1.5
-  textSize(22)
-  fill(255)
-  stroke('grey')
-  strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
-  strokeWeight(1)
-  fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0*XP == 0)
-    text('Tempo: ' + parseInt(XP / 100), 26, 118)
-  else
-    text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
-    cena = 99
-  //////////////////
-
-  //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
-    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
-    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
-  caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
-    caixa = 0, player = up[1], sons[6].play()
-
+base()
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
-    if (q1 == 8) {
+    if (q1 == 3) {
       textSize(14)
       fill('white');
       strokeWeight(1)
@@ -1214,7 +882,7 @@ function fase6() {
     text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
   } else
     time = 0
-  if (keyCode == 83 && q1 == 8) {
+  if (keyCode == 83 && q1 == 3) {
     cena = 100
   }
 
@@ -1222,8 +890,473 @@ function fase6() {
   //PLAYER
   image(player, x, y, 80, 150);
 
-  //CONTROLES E ANIMAÇÕES
-  if (keyIsDown(LEFT_ARROW) && x > 0) {
+}
+function fase7() {
+  if (x1 != 6)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 6, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+  if (q1 >= 10)
+    rect(838, 400, 70, 40, 6)
+  else
+    rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65, 25);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(14)
+  text('Caixas no\ncaminhão:', 823, 367)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('07', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': GOHAN COMPROU 8 DIVIDO 4 (OU 8/4) CAIXAS COM CARNE DE DINOSSAURO\nQUANTAS CAIXAS DE CARNE SÃO?', 170, 34)
+  textSize(13)
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+  base()
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 2) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+        sons[4].setVolume(0.03)
+        XP = 'STOP'
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 2) {
+    cena = 10
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+}
+function fase8() {
+  if (x1 != 7)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+  if (q1 >= 10)
+    rect(838, 400, 70, 40, 6)
+  else
+    rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65, 25);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(14)
+  text('Caixas no\ncaminhão:', 823, 367)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('08', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': UM UPALUPA COMPROU 20/4 CAIXAS DE CHOCOLATE\nQUANTAS CAIXAS SÃO?', 170, 34)
+  textSize(13)
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+  base()
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 5) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+        sons[4].setVolume(0.03)
+        XP = 'STOP'
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 5) {
+    cena = 10
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+}
+function fase9() {
+  if (x1 != 8)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+  if (q1 >= 10)
+    rect(838, 400, 70, 40, 6)
+  else
+    rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65, 25);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(14)
+  text('Caixas no\ncaminhão:', 823, 367)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('09', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': A GALINHA PINTADINHA COMPROU 30/5 CAIXAS COM MILHO QUANTAS\nCAIXAS SÃO?', 170, 34)
+  textSize(13)
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+  base()
+
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 6) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+        sons[4].setVolume(0.03)
+        XP = 'STOP'
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 6) {
+    cena = 12
+  }
+
+
+  //PLAYER
+  image(player, x, y, 80, 150);
+
+}
+function fase10() {
+  if (x1 != 9)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+
+  //TELA
+  background(bg);
+  fill('grey');
+  stroke('black');
+  strokeWeight(1);
+  if (q1 >= 10)
+    rect(838, 400, 70, 40, 6)
+  else
+    rect(838, 400, 40, 40, 20)
+  fill('white')
+  strokeWeight(5)
+  stroke(255, 0, 0);
+  rect(70, 11, 800, 65, 25);
+  strokeWeight(1);
+  fill(0);
+  stroke(0);
+  textSize(14)
+  text('Caixas no\ncaminhão:', 823, 367)
+  fill('blue')
+  textSize(32)
+  text(q1, 850, 430)
+  fill('black')
+  textSize(16)
+  text('Questão ', 78, 34)
+  fill('red')
+  text('09', 150, 34)
+  fill(0);
+  strokeWeight(0)
+  textSize(18)
+  text(': O CHAVEZ ACHOU 20 REAIS E COMPROU 21/3 CAIXAS COM\nSANDUíCHE DE PRESUNTO, QUANTAS CAIXAS SÃO?', 170, 34)
+  textSize(13)
+  text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
+  base()
+  //RESOLUÇÃO DA QUESTÃO
+  if (keyCode == 32)
+    if (q1 == 7) {
+      textSize(14)
+      fill('white');
+      strokeWeight(1)
+      stroke('black');
+      ellipse(x + 10, y + 10, 10, 10)
+      ellipse(x + 10, y - 10, 12, 12)
+      ellipse(x + 22, y - 20, 14, 14)
+      strokeWeight(1);
+      rect(x + 30, y - 35, 100, 20, 10);
+      fill(0)
+      stroke(0);
+      text('CONSEGUI!!', x + 35, y - 20)
+      textSize(32)
+      text('PARABENS!!', 345, 259)
+      textSize(14)
+      strokeWeight(0)
+      text('Pressione S para ir para a proxima fase.', 319, 278);
+      if (sonsON == undefined) {
+        sonsON = 1
+        sons[0].stop()
+        sons[1].setVolume(0.1);
+        sons[1].play()
+        pontos[stage] += parseInt(XP / 100)
+        sons[4].setVolume(0.03)
+        XP = 'STOP'
+      };
+    }
+  else
+  if (time < 4000) {
+    time++
+    textSize(14)
+    fill('white');
+    stroke('black')
+    strokeWeight(1);
+    ellipse(x + 10, y + 10, 10, 10)
+    ellipse(x + 10, y - 10, 12, 12)
+    ellipse(x + 22, y - 20, 14, 14)
+    rect(x + 30, y - 55, 150, 50, 10)
+    fill(0)
+    text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
+  } else
+    time = 0
+  if (keyCode == 83 && q1 == 7) {
+    cena = 100
+  }
+  //PLAYER
+  image(player, x, y, 80, 150);
+}
+function gameover() {
+  if (x1 != 'FIM DO JOGO')
+    x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = ' ', B0 = ' ', C0 = ' ', sons[4].stop(), sons[3].setVolume(0.06), sons[3].play();
+  efeito++
+  background('grey');
+  textSize(45)
+  fill(0)
+  text('GAME OVER', (width * 5) / 14 - 20, height / 2)
+  textSize(18)
+  strokeWeight(1)
+  stroke('grey')
+  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 80, height / 2 + 100)
+  text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
+
+
+  /////////////////////////////////TESTE/////////////////////////////
+  text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
+  if (keyCode == ENTER)
+    jogador[stage] = A0 + B0 + C0, cena = 0, x1 = undefined
+  noFill(0)
+  strokeWeight(3)
+  stroke(FX)
+  rect(x, y, 70, 50, 10)
+  textSize(16)
+  stroke('grey')
+  fill(0)
+  textSize(32)
+  text(A0, (width * 5) / 14 + 31, height / 2 + 220)
+  text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
+  text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
+  /////////////////////////////////////////////////////////
+
+}
+function win() {
+  if (x1 != 'FIM DO JOGO')
+    x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = ' ', B0 = ' ', C0 = ' ',sons[4].stop(), sons[5].setVolume(0.05), sons[5].play()
+  efeito++
+  background(220);
+  textSize(32)
+  fill(0)
+  strokeWeight(2)
+  text('VOCE GANHOU!!', (width * 5) / 14 - 5, height / 2 + 30)
+  textSize(45)
+  text('PARABENS', (width * 5) / 14 - 5, height / 2 - 30)
+  textSize(18)
+  strokeWeight(1)
+  stroke('grey')
+  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
+  text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
+
+  ////////////////////////TESTE//////////////////////////////
+  text('INSIRA SEU NOME:', (width * 5) / 14 + 40, height / 2 + 180)
+  if (keyCode == ENTER)
+    cena = 0, x1 = undefined, jogador[stage] = A0 + B0 + C0
+  noFill(0)
+  strokeWeight(3)
+  stroke(FX)
+  rect(x+17, y+20, 70, 50, 10)
+  textSize(16)
+  stroke('grey')
+  fill(0)
+  textSize(32)
+  strokeWeight(0)
+  text(A0, (width * 5) / 14 + 46, height / 2 + 243)
+  text(B0, (width * 5) / 14 + 70 + 46, height / 2 + 243)
+  text(C0, (width * 5) / 14 + 140 + 46, height / 2 + 243)
+}
+function intro() {
+  background(170)
+  textSize(32);
+  efeito++
+  if(x1!='Zero')
+    sons[0].stop(), x1='zero'
+  fill(FX)
+  text('!!FIQUE ATENTO!!', 300, 40);
+  textSize(18);
+   strokeWeight(0)
+  fill(0)
+  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe os pontos\nreferente ao tempo restante, CASO O TEMPO CHEGUE A 0 (ZERO) VOCÊ PERDE.\nLembrando que não há transição de tela entre as questões, então...\nSeja rápido :D\n\nCONTROLES:\nZ para pegar caixa do deposito para o caminhão.\nX para pegar do caminhão para o deposito.\nESPAÇO para verifica a resposta.\nS para ir para a próxima fase.\n\nPS: Os pontos só serão adicionados se você verificar a resposta!', 100, 80);
+  stroke('grey');
+  strokeWeight(1);
+  textSize(18)
+  fill(0)
+  sons[1].stop()
+  text('Pressione S para para começar.', 320, 500);
+  if (keyCode == 83)
+    cena = 1, sons[2].play()
+}
+function base() {
+  
+  //CONDIÇÕES
+if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
+    caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+    caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
+  if(keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+  caixa = 1, q1--, player = rc[1], sons[7].play()
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+    caixa = 0, player = up[1], sons[6].play()
+
+  
+  //MOVIMENTO E ANIMAÇÕES
+    if (keyIsDown(LEFT_ARROW) && x > 0) {
     x -= Speed;
     countframe++
     if (caixa == 0)
@@ -1255,90 +1388,24 @@ function fase6() {
     if (caixa == 1)
       player = downc[FR]
   }
-}
-function gameover() {
-  if (x1 != 'FIM DO JOGO')
-    x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = '', sons[4].stop(),sons[3].setVolume(0.06), sons[3].play()
-  efeito++
-  background('grey');
-  textSize(45)
-  fill(0)
-  text('GAME OVER', (width * 5) / 14 - 20, height / 2)
-  textSize(18)
-  strokeWeight(1)
+  
+  //////PONTOS E GAME OVER
+    XP -= 1.5
+  textSize(22)
+  fill(255)
   stroke('grey')
-  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
-  text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
-
-
-  /////////////////////////////////TESTE/////////////////////////////
-  text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
-  if (keyCode == ENTER)
-    jogador[stage] = A0 + B0 + C0, cena = 0, x1 = undefined
-  noFill(0)
+  strokeWeight(3)
+  //pontos
+  rect(720, 90, 185, 40, 10)
+  //score
+  rect(20, 90, 145, 40, 10)
   strokeWeight(1)
-  stroke(FX)
-  rect(x, y, 70, 50, 10)
-  textSize(16)
-  stroke('grey')
   fill(0)
-  textSize(32)
-  text(A0, (width * 5) / 14 + 31, height / 2 + 220)
-  text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
-  text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
-  /////////////////////////////////////////////////////////
-
-}
-function win() {
-  if (x1 != 'FIM DO JOGO')
-    x1 = 'FIM DO JOGO', x = 326, y = 480, A0 = '', B0 = '', C0 = '',sons[4].stop(), sons[5].setVolume(0.05), sons[5].play()
-  efeito++
-  background(220);
-  textSize(32)
-  fill(0)
-  text('VOCE GANHOU!!', (width * 5) / 14 - 20, height / 2 + 30)
-  textSize(45)
-  text('PARABENS', (width * 5) / 14 - 20, height / 2 - 30)
-  textSize(18)
-  strokeWeight(1)
-  stroke('grey')
-  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
-  text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
-
-  ////////////////////////TESTE//////////////////////////////
-  text('INSIRA SEU NOME:', (width * 5) / 14 + 20, height / 2 + 180)
-  if (keyCode == ENTER)
-    cena = 0, x1 = undefined, jogador[stage] = A0 + B0 + C0
-  noFill(0)
-  strokeWeight(1)
-  stroke(FX)
-  rect(x, y, 70, 50, 10)
-  textSize(16)
-  stroke('grey')
-  fill(0)
-  textSize(32)
-  text(A0, (width * 5) / 14 + 31, height / 2 + 220)
-  text(B0, (width * 5) / 14 + 70 + 31, height / 2 + 220)
-  text(C0, (width * 5) / 14 + 140 + 31, height / 2 + 220)
-}
-function intro() {
-  background(170)
-  textSize(32);
-  efeito++
-  if(x1!='Zero')
-    sons[0].stop(), x1='zero'
-  fill(FX)
-  text('!!FIQUE ATENTO!!', 300, 40);
-  textSize(18);
-   strokeWeight(0)
-  fill(0)
-  text('As questões tem que ser resolvidas NO MENOR TEMPO POSSIVEL, você recebe os pontos\nreferente ao tempo restante, CASO O TEMPO CHEGUE A 0 (ZERO) VOCÊ PERDE.\nLembrando que não há transição de tela entre as questões, então...\nSeja rápido :D\n\nCONTROLES:\nZ para pegar caixa do deposito para o caminhão.\nX para pegar do caminhão para o deposito.\nESPAÇO para verifica a resposta.\nS para ir para a próxima fase.\n\nPS: Os pontos só serão adicionados se você verificar a resposta!', 100, 80);
-  stroke('grey');
-  strokeWeight(1);
-  textSize(18)
-  fill(0)
-  sons[1].stop()
-  text('Pressione S para para começar.', 320, 500);
-  if (keyCode == 83)
-    cena = 1, sons[2].play()
+  text('Pontos: ' + pontos[stage], 725, 118)
+  if (0*XP==0)
+    text('Tempo: ' + parseInt(XP / 100), 26, 118)
+  else
+    text('Tempo: STOP', 26, 118)
+  if (parseInt(XP / 100) == 0)
+    cena = 99
 }
