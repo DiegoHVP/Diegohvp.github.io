@@ -56,23 +56,23 @@ var
 var sons = []
 
 function preload() {
-  soundFormats('ogg', 'mp3', 'm4a', 'wav');
+  soundFormats('ogg');
   //Menu sound
   sons[1] = loadSound('https://diegohvp.github.io/Got Item! (Internal Percussion).ogg')
   //Menu FX
-  sons[2] = loadSound('https://diegohvp.github.io/fx_menu.wav')
+  sons[2] = loadSound('https://diegohvp.github.io/sons/fx_menu.ogg')
   //GANHOU FASE
   sons[0] = loadSound('https://diegohvp.github.io/Cave Story.ogg')
   //Game over
-  sons[3] = loadSound('https://diegohvp.github.io/game_over.mp3')
+  sons[3] = loadSound('https://diegohvp.github.io/sons/game_over.ogg')
   //Musica fases
-  sons[4] = loadSound('https://diegohvp.github.io/theme.m4a')
+  sons[4] = loadSound('https://diegohvp.github.io/sons/theme.ogg')
   //GANHOU JOGO
-  sons[5] = loadSound('https://diegohvp.github.io/win.mp3')
+  sons[5] = loadSound('https://diegohvp.github.io/sons/win.ogg')
   //solta caixa
-  sons[6] = loadSound('https://diegohvp.github.io/fx_caixa_solta.wav')
+  sons[6] = loadSound('https://diegohvp.github.io/sons/fx_caixa_solta.ogg')
   //pega caixa
-  sons[7] = loadSound('https://diegohvp.github.io/fx_caixa_pega.wav')
+  sons[7] = loadSound('https://diegohvp.github.io/sons/fx_caixa_pega.ogg')
 
   //PLAYER SEM A CAIXA
   down[0] = loadImage('https://diegohvp.github.io/pl/Down00.png')
