@@ -36,7 +36,7 @@ var bg, player, countframe = 0,
   pontos = [],
   x1,
   lista = '',
-  Speed = 20;
+  Speed = 10;
 
 //INSERIR NOME
 var
