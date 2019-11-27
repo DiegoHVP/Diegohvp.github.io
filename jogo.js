@@ -1065,9 +1065,9 @@ function fase8() {
     text('ACHO QUE TEM\nALGUM DE ERRADO', x + 35, y - 37)
   } else
     time = 0
-  if (keyCode == 83 && q1 == 5) {
+  if (keyCode == 83 && q1 == 5)
     cena = 10
-  }
+
 
 
   //PLAYER
