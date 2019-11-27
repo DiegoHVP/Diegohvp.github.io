@@ -222,6 +222,9 @@ function menu() {
   image(logo, 130, 200, 680, 60);
   textSize(12);
   text('A vida nunca foi tão emocionante.', 588, 270);
+  textSize(14);
+  stroke(0);
+  text('AVISO:\nJogo em teste, BUGs podem ocorrer.', 20,540);
   textSize(32);
   stroke(0);
   text('Jogar', 390, 355);
