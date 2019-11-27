@@ -883,7 +883,7 @@ base()
   } else
     time = 0
   if (keyCode == 83 && q1 == 3) {
-    cena = 100
+    cena = 9
   }
 
 
