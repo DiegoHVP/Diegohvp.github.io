@@ -1076,7 +1076,7 @@ function fase8() {
 }
 function fase9() {
   if (x1 != 8)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 8, player = l[1], caixa = 0, sons[4].setVolume(0.08)
 
   //TELA
   background(bg);
@@ -1168,7 +1168,7 @@ function fase9() {
 }
 function fase10() {
   if (x1 != 9)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 9, player = l[1], caixa = 0, sons[4].setVolume(0.08)
 
   //TELA
   background(bg);
