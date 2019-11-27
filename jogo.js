@@ -339,7 +339,6 @@ function fase1() {
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
-
   base();  //CONTROLE, SPRITES, CONDIÇÕES, TIME, GAME OVER
 
 
@@ -652,7 +651,7 @@ function win() {
   background(D,L,S);
   textSize(32)
   fill(0)
-  strokeWeight(16)
+  strokeWeight(6)
   stroke(L-23, S-40, D)
   text('VOCE GANHOU!!', (width * 5) / 14 - 5, height / 2 + 30)
   textSize(52)
@@ -660,8 +659,8 @@ function win() {
   textSize(18)
   strokeWeight(2)
   stroke(255)
-  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
-  text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 30, height / 2 + 100)
+  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 75, height / 2 + 100)
+  text('\nVocê consegue ir mais rapido que isso?', (width * 5) / 14 - 15, height / 2 + 100)
 
   /////////////////////INSERIR NOME + TRANSIÇÃO/////////////////////
   text('INSIRA SEU NOME:', (width * 5) / 14 + 40, height / 2 + 180)
