@@ -834,7 +834,7 @@ function design1() {
     sons[0].stop()
     sons[1].setVolume(0.13);
     sons[1].play()
-    pontos[stage] = parseInt(XP / 100)
+    pontos[stage] += parseInt(XP / 100)
     XP = 'STOP'
   };
 }
