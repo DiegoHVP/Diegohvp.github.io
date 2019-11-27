@@ -741,7 +741,7 @@ function fase5() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS EM\nLATA, QUANTAS CAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
+  text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS\nEM LATA, QUANTAS CAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
   base()
@@ -832,7 +832,7 @@ function fase6() {
   fill(0);
   strokeWeight(0)
   textSize(18)
-  text(': A BARBIE COMPROU METADE DE 6 (OU 6/2) CAIXAS DE\nSAPATOS, QUANTAS CAIXAS SÃO?', 170, 34)
+  text(': A BARBIE COMPROU METADE DE 6 (OU 6/2) CAIXAS DE SAPATOS,\n QUANTAS CAIXAS SÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
