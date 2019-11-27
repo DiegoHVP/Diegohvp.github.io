@@ -37,7 +37,6 @@ var bg, player, countframe = 0,
   lista = '',
   Speed = 10,
   questaoatual;
-
 //INSERIR NOME
 var
   L2 = 20,
@@ -51,28 +50,19 @@ var
   efeito0 = 0,
   FX,
   jogador = []
-
 //SOM
 var sons = []
 
 function preload() {
   soundFormats('ogg');
-  //Menu sound
-  sons[1] = loadSound('https://diegohvp.github.io/Got Item! (Internal Percussion).ogg')
-  //Menu FX
-  sons[2] = loadSound('https://diegohvp.github.io/sons/fx_menu.ogg')
-  //GANHOU FASE
-  sons[0] = loadSound('https://diegohvp.github.io/Cave Story.ogg')
-  //Game over
-  sons[3] = loadSound('https://diegohvp.github.io/sons/game_over.ogg')
-  //Musica fases
-  sons[4] = loadSound('https://diegohvp.github.io/sons/theme.ogg')
-  //GANHOU JOGO
-  sons[5] = loadSound('https://diegohvp.github.io/sons/win.ogg')
-  //solta caixa
-  sons[6] = loadSound('https://diegohvp.github.io/sons/fx_caixa_solta.ogg')
-  //pega caixa
-  sons[7] = loadSound('https://diegohvp.github.io/sons/fx_caixa_pega.ogg')
+  sons[1] = loadSound('https://diegohvp.github.io/Got Item! (Internal Percussion).ogg')  //MENU SOUND
+  sons[2] = loadSound('https://diegohvp.github.io/sons/fx_menu.ogg')  //MENU FX
+  sons[0] = loadSound('https://diegohvp.github.io/Cave Story.ogg')  //GANHOU FASE
+  sons[3] = loadSound('https://diegohvp.github.io/sons/game_over.ogg')  //GAME OVE
+  sons[4] = loadSound('https://diegohvp.github.io/sons/theme.ogg')  //MUSICA FASES
+  sons[5] = loadSound('https://diegohvp.github.io/sons/win.ogg')  //GANHOU JOGO
+  sons[6] = loadSound('https://diegohvp.github.io/sons/fx_caixa_solta.ogg')  //SOLTA CAIXA
+  sons[7] = loadSound('https://diegohvp.github.io/sons/fx_caixa_pega.ogg')  //PEGA CAIXA
 
   //PLAYER SEM A CAIXA
   down[0] = loadImage('https://diegohvp.github.io/pl/Down00.png')
@@ -111,8 +101,7 @@ function preload() {
   rc[2] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r02-1.png')
   rc[3] = loadImage('https://diegohvp.github.io/Cpl/Diegohvp.github.io-r01.png')
 
-  //FUNDO
-  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png')
+  bg = loadImage('https://diegohvp.github.io/ceneraio (1).png')  //FUNDO
   logo = loadImage('https://diegohvp.github.io/logo.png');
 }
 function setup() {
@@ -194,6 +183,7 @@ function menu() {
   //RESTAURAR DADOS
   if (q1 != 0 || x != 30 || y != 450)
     q1 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0, sonsON = undefined, x1 = undefined, sons[3].stop(), sons[5].stop()
+
   //TELA
   L++
   S++
@@ -208,19 +198,16 @@ function menu() {
   fill('white');
   stroke('black');
   strokeWeight(1);
-  rect(370, 320, 120, 55, 120);
-  rect(370, 390, 120, 55, 120);
-  rect(370, 460, 120, 55, 120);
+  rect(370, 320, 120, 55, 120); //JOGAR
+  rect(370, 390, 120, 55, 120); //REGRAS
+  rect(370, 460, 120, 55, 120); //SOBRE
 
   textSize(32);
   fill('black');
   stroke(255);
-  image(logo, 130, 200, 680, 60);
+  image(logo, 130, 200, 680, 60); //TITULO
   textSize(12);
-  text('A vida nunca foi tão emocionante.', 588, 270);
-  textSize(14)
-  stroke(0)
-  text('AVISO:\nJogo em teste, BUGs podem ocorrer.', 20,540)
+  text('A vida nunca foi tão emocionante.', 588, 270) //SUBTITULO MUITO FOD.... QUER DIZER SUBTITULO BOLADO PRA DÉDÉU
   textSize(32);
   stroke(0);
   text('Jogar', 390, 355);
@@ -230,13 +217,15 @@ function menu() {
   noFill();
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(xo, yo, 130, 65, 30);
+  rect(xo, yo, 130, 65, 30) //ELIPSE SELECIONAR
   if (sonsON == undefined) {
+    //O sonsON E UMA VARIAVEL AUXILIAR PARA EXECUTAR APENAS UM VEZ
     sonsON = 1
     sons[0].setVolume(0.1);
     sons[0].play();
-    //RANKIAR JOGADORES
-    for (let i = 0, lista = ''; pontos[i] != undefined; i++)
+    
+
+    for (let i = 0; pontos[i] != undefined; i++) //RANKIAR OS JOGADORES
       for (let ii = 0, rank; pontos[ii] != undefined; ii++) {
         if (pontos[i] > pontos[ii]) {
           rank = pontos[i]
@@ -248,23 +237,23 @@ function menu() {
           jogador[ii] = rank
         }
       }
+    
     lista = ''
-    //LISTA
-    for (let i = 4; i > -1; i--) {
+
+    for (let i = 4; i > -1; i--) { //GUARDAR OS 5 PRIMEIROS EM lista
       if (pontos[i] != undefined)
         lista = (i + 1) + '° ' + jogador[i] + ' ' + pontos[i] + '\n' + lista
     }
   }
-  if (lista == '')
-    lista = '.....'
+  if (lista == '') //CASO NÃO TENHA NINGUEM
+    lista = '...........'
   textSize(18)
   fill(0)
   stroke('grey')
   strokeWeight(1)
-  text('RANKING:\n\n' + lista, 40, 340)
+  text('RANKING:\n\n' + lista, 40, 340) //PRINTAR RANKING
 }
 function regras() {
-  //R, G, B
   background('#7FDBFF');
   fill(0);
   stroke('grey');
@@ -276,7 +265,7 @@ function regras() {
 
   textSize(18)
   text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
-  if (keyCode == 32)
+  if (keyCode == 32)  //VOLTA MENU
     cena = 0, sons[2].play()
 
 }
@@ -292,80 +281,83 @@ function sobre() {
   strokeWeight(1);
   textSize(18)
   text('Pressione ESPAÇO para voltar ao menu.', 290, 500);
-  if (keyCode == 32)
+  if (keyCode == 32)  //VOLTA MENU
     cena = 0, sons[2].play()
 
 }
 function keyPressed() {
-  if (cena == 0) {
-    if (keyCode === ENTER)
+  
+//////////////////////////CONTROLE MENU/////////////////////////////////////
+  if (cena == 0) {  //FUNCIONA APENAS EM CENA 0, OU SEJA MENU
+    if (keyCode === ENTER)  //CENA RECEBE AUX, MUDA A TELA
       cena = aux, sons[2].play()
     if (keyCode === DOWN_ARROW) {
-      if (yo >= 315 && yo < 455)
+      if (yo >= 315 && yo < 455)  //DESCER, LIMITE
         yo += 70, sons[2].play()
     }
     if (keyCode === UP_ARROW) {
-      if (yo > 315 && yo <= 455)
+      if (yo > 315 && yo <= 455)  //SUBIR, LIMITE
         yo -= 70, sons[2].play()
     }
-    if (yo == 385)
+    if (yo == 385)  //SE ESTA EM REGRAS AUX = 2
       aux = 2;
-    if (yo == 315)
+    if (yo == 315)  //SE ESTA EM JOGAR AUX = -1
       aux = -1;
-    if (yo == 455)
+    if (yo == 455)  //SE ESTA EM REGRAS AUX = 3
       aux = 3;
   }
-
-  //////////////////////////TESTE/////////////////////////////////////
-  if (cena == 99 || cena == 100) {
-
-    if (keyIsDown(RIGHT_ARROW) && x < 466)
+  
+  
+  //////////////////CONTROLE INSERIR NOME/////////////////////////////////////
+  if (cena == 99 || cena == 100) {    //FUNCIONA APENAS EM CENA 99 OU CENA 100, OU SEJA GAME OVER E WIN
+    if (keyIsDown(RIGHT_ARROW) && x < 466)  //MOVER QUADRO DIREITA
       x += 70, sons[2].play()
-    if (keyIsDown(LEFT_ARROW) && x > 326)
+    if (keyIsDown(LEFT_ARROW) && x > 326)  //MOVER QUADRO ESQUERDA
       x -= 70, sons[2].play()
-    if (x == 326 && keyCode <= 90 && keyCode >= 65)
+    if (x == 326 && keyCode <= 90 && keyCode >= 65) //PRIMEIRO QUADRO, INSERIR LETRA
       A = keyCode, A0 = String.fromCharCode(A)
-    if (x == 326 && keyCode == 8)
+    if (x == 326 && keyCode == 8)  //PRIMEIRO QUADRO, APAGAR LETRA
       A0 = ' '
 
-    if (x == 396 && keyCode <= 90 && keyCode >= 65)
+    if (x == 396 && keyCode <= 90 && keyCode >= 65)  //SEGUNDO QUADRO, INSERIR LETRA
       B = keyCode, B0 = String.fromCharCode(B)
-    if (x == 396 && keyCode == 8)
+    if (x == 396 && keyCode == 8)  //SEGUNDO QUADRO, APAGAR LETRA
       B0 = ' '
 
-    if (x == 466 && keyCode <= 90 && keyCode >= 65)
+    if (x == 466 && keyCode <= 90 && keyCode >= 65)  //TERCEIRO QUADRO, INSERIR LETRA
       C = keyCode, C0 = String.fromCharCode(C)
-    if (x == 466 && keyCode == 8)
+    if (x == 466 && keyCode == 8)  //TERCEIRO QUADRO, APAGAR LETRA
       C0 = ' '
   }
 }
 function fase1() {
   if (pontos[stage] == undefined)
     pontos[stage] = 0, player = l[1], caixa = 0, sons[0].stop(), sons[4].setVolume(0.08), sons[4].play(), x1 = undefined, sonsON = undefined
-  design0()
+  design0() //DESENHOS, DEFINIÇÕES, CONTADORES
   textSize(18)
   text(': O CAMINHÃO DE BILL GATES ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
-  base();
+
+  base();  //CONTROLE, SPRITES, CONDIÇÕES, TIME, GAME OVER
 
 
   //RESOLUÇÃO DA QUESTÃO
   if (keyCode == 32)
     if (q1 == 5) {
-      design1()
+      design1() //PONTOS SOMA, PENSAMENTO - CERTO
     }
   else
   if (time < 4000) {
-    design2()
+    design2() //PENSAMENTO - ERRADO
   } else
     time = 0
-  if (keyCode == 83 && q1 == 5)
+  if (keyCode == 83 && q1 == 5)  //PROXIMA FASE
     cena = 4
 
-  //PLAYER
-  image(player, x, y, 80, 150);
+  
+  image(player, x, y, 80, 150); //PLAYER
 
 }
 function fase2() {
@@ -448,8 +440,6 @@ function fase4() {
   if (keyCode == 83 && q1 == 12)
     cena = 7
 
-
-
   //PLAYER
   image(player, x, y, 80, 150);
 }
@@ -511,7 +501,7 @@ function fase7() {
   if (x1 != 6)
     XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 6, player = l[1], caixa = 0, sons[4].setVolume(0.08)
   design0()
-  text(': GOHAN COMPROU 8 DIVIDO 4 (OU 8/4) CAIXAS COM CARNE DE DINOSSAURO\nQUANTAS CAIXAS DE CARNE SÃO?', 170, 34)
+  text(': GOHAN COMPROU 8 DIVIDIDO POR 4 (OU 8/4) CAIXAS COM CARNE DE\nDINOSSAURO QUANTAS CAIXAS DE CARNE SÃO?', 170, 34)
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
   
@@ -624,8 +614,8 @@ function gameover() {
   textSize(18)
   strokeWeight(1)
   stroke('grey')
-  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 50, height / 2 + 100)
-  text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 30, height / 2 + 100)
+  text('Pontos: ' + pontos[stage], (width * 5) / 14 + 75, height / 2 + 100)
+  text('\nNão desamine você pode tentar novamente.', (width * 5) / 14 - 45, height / 2 + 100)
 
 
   /////////////////////////INSERIR NOME + TRANSIÇÃO//////////////////////////
@@ -712,19 +702,18 @@ function intro() {
 }
 function base() {
   //CONDIÇÕES
-  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0)
+  if (keyCode == 90 && x >= 5 && x <= 195 && y < 360 && caixa == 0) //PEGA CAIXA - DEPOSITO
     caixa = 1, player = upc[1], sons[7].setVolume(0.6), sons[7].play()
-  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1)
+  if (keyCode == 90 && x >= 705 && y <= 435 && caixa == 1) //SOLTA CAIXA - CAMINHÃO
     caixa = 0, q1++, player = r[1], sons[6].setVolume(0.6), sons[6].play()
-  if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0)
+  if (keyCode == 88 && x >= 705 && y <= 435 && caixa == 0 && q1 > 0) //PEGA CAIXA - CAMINHÃO
     caixa = 1, q1--, player = rc[1], sons[7].play()
-  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1)
+  if (keyCode == 88 && x >= 5 && x <= 195 && y < 360 && caixa == 1) //SOLTA CAIXA DEPOSITO
     caixa = 0, player = up[1], sons[6].play()
-
-
+  
   //MOVIMENTO E ANIMAÇÕES
   if (keyIsDown(LEFT_ARROW) && x > 0) {
-    x -= Speed;
+    x -= Speed //ESQUERDA
     countframe++
     if (caixa == 0)
       player = r[FR]
@@ -732,7 +721,7 @@ function base() {
       player = rc[FR]
   }
   if (keyIsDown(RIGHT_ARROW) && x < 730) {
-    x += Speed;
+    x += Speed //DIREITA
     countframe++
     if (caixa == 0)
       player = l[FR]
@@ -740,7 +729,7 @@ function base() {
       player = lc[FR]
   }
   if (keyIsDown(UP_ARROW) && y > 350) {
-    y -= Speed;
+    y -= Speed //SUBINDO
     countframe++
     if (caixa == 0)
       player = up[FR]
@@ -748,7 +737,7 @@ function base() {
       player = upc[FR]
   }
   if (keyIsDown(DOWN_ARROW) && y < 500) {
-    y += Speed;
+    y += Speed //DESCENDO
     countframe++
     if (caixa == 0)
       player = down[FR]
@@ -756,28 +745,27 @@ function base() {
       player = downc[FR]
   }
 
-  //////PONTOS E GAME OVER
+  //////TEMPO E GAME OVER
   XP -= 1.5
   textSize(22)
   fill(255)
   stroke('grey')
   strokeWeight(3)
-  //pontos
-  rect(720, 90, 185, 40, 10)
-  //score
-  rect(20, 90, 145, 40, 10)
+  rect(720, 93, 170, 37, 10) //SCORE
+  rect(20, 93, 145, 37, 10) //TEMPO
   strokeWeight(1)
   fill(0)
-  text('Pontos: ' + pontos[stage], 725, 118)
-  if (0 * XP == 0)
+  text('Pontos: ' + pontos[stage], 725, 118) //PRINT PONTOS
+  
+  if (0 * XP == 0) //VERIFICAR SE XP (OU TEMPO) E NUMERO
     text('Tempo: ' + parseInt(XP / 100), 26, 118)
   else
     text('Tempo: STOP', 26, 118)
-  if (parseInt(XP / 100) == 0)
+  if (parseInt(XP / 100) == 0) //GAME OVER
     cena = 99
 }
 function design0() {
-  //TITULO
+  //questaoatual CONTADOR FASE
   if (cena == 1)
     questaoatual = 01
   if (cena == 4)
@@ -803,14 +791,15 @@ function design0() {
   fill('grey');
   stroke('black');
   strokeWeight(1);
-  if (q1 >= 10)
-    rect(838, 400, 70, 40, 6)
+  if (q1 >= 10) //CIRCULO DO CONTADOR DO CAMINHÃO
+    rect(838, 400, 70, 40, 6) //CIRCULO
   else
-    rect(838, 400, 40, 40, 20)
+    rect(838, 400, 40, 40, 20) //QUADRADO
+  
   fill('white')
   strokeWeight(5)
   stroke(255, 0, 0);
-  rect(70, 11, 800, 65, 25);
+  rect(70, 11, 800, 65, 25); //'QUADRADO' NA QUESTÃO
   strokeWeight(1);
   fill(0);
   stroke(0);
@@ -818,16 +807,18 @@ function design0() {
   text('Caixas no\ncaminhão:', 823, 367)
   fill('blue')
   textSize(32)
-  text(q1, 850, 430)
+  text(q1, 850, 430) //CONTADOR CAIXAS
   fill('black')
   textSize(16)
-  
   text('Questão ', 80, 34)
   fill('red')
-  if (questaoatual<=9)
-    text('0'+questaoatual, 150, 34)
+  
+  if (questaoatual<=9)  //NUMERO DA QUESTÃO
+    text('0'+questaoatual, 150, 34) //ADD SERRO
   else
-    text(questaoatual, 150, 34)
+    text(questaoatual, 150, 34) //SEM ZERO
+  
+  //PARA AS STRINGS DA FASE LOGO ABAIXO
   fill(0);
   strokeWeight(0)
   textSize(18)
@@ -861,7 +852,7 @@ function design1() {
         XP = 'STOP'
       };
 }
-function design2(){
+function design2() {
 ///PENSAMENTO - ERRO
     time++
     textSize(14)
