@@ -3,14 +3,15 @@ Jogo - Entregador de Mercadorias
 
 Olá pessoa AMAVEL :)
 
-SONS USADOS
+SONS USADOS:
 UNDERTALE (MEU JOGO FAVORITO)
-  -Nyeh Heh Heh! (Intro) + Bonetrousle Extended
-  -Confession
+ -Nyeh Heh Heh! (Intro) + Bonetrousle Extended
+ -Confession
+ -Last Goodbye
 CAVE STORY
-  -Theme
-  -Got Item! (Internal Percussion)
-  -2 FX
+ -Theme
+ -Got Item! (Internal Percussion)
+ +FX
 
 //SPRITES
 pasta pl = player sem a caixa
