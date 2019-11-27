@@ -37,6 +37,7 @@ var bg, player, countframe = 0,
   lista = '',
   Speed = 10,
   questaoatual;
+
 //INSERIR NOME
 var
   L2 = 20,
@@ -198,9 +199,9 @@ function menu() {
   fill('white');
   stroke('black');
   strokeWeight(1);
-  rect(370, 320, 120, 55, 120); //JOGAR
-  rect(370, 390, 120, 55, 120); //REGRAS
-  rect(370, 460, 120, 55, 120); //SOBRE
+  rect(370, 320, 120, 55, 120); //ELIPESE JOGAR
+  rect(370, 390, 120, 55, 120); //ELIPESE REGRAS
+  rect(370, 460, 120, 55, 120); //ELIPESE SOBRE
 
   textSize(32);
   fill('black');
@@ -219,7 +220,7 @@ function menu() {
   stroke(255, 0, 0);
   rect(xo, yo, 130, 65, 30) //ELIPSE SELECIONAR
   if (sonsON == undefined) {
-    //O sonsON E UMA VARIAVEL AUXILIAR PARA EXECUTAR APENAS UM VEZ
+    //O 'sonsON' E UMA VARIAVEL AUXILIAR PARA EXECUTAR APENAS UM VEZ, O MESMO PARA 'x1'
     sonsON = 1
     sons[0].setVolume(0.1);
     sons[0].play();
@@ -339,6 +340,10 @@ function fase1() {
   textSize(13)
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
+  
+    if(keyCode==81)
+    cena = 100
+
   base();  //CONTROLE, SPRITES, CONDIÇÕES, TIME, GAME OVER
 
 
@@ -360,7 +365,7 @@ function fase1() {
 
 }
 function fase2() {
-  if (x1 != 1)
+  if (x1 != 1)  //x1 por tela ser para executar um vez, o mesmo para sonsON
     XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 1, player = l[1], caixa = 0, sons[4].setVolume(0.08)
   //TELA
   design0()
