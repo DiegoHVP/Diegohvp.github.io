@@ -184,7 +184,6 @@ function menu() {
   //RESTAURAR DADOS
   if (q1 != 0 || x != 30 || y != 450)
     q1 = 0, x = 30, y = 450, XP = 12000, stage++, caixa = 0, sonsON = undefined, x1 = undefined, sons[3].stop(), sons[5].stop()
-
   //TELA
   L++
   S++
@@ -341,8 +340,10 @@ function fase1() {
   text('Pressione Z para pegar a caixa no deposito.\nPressione X para pegar as caixas que já estão no caminhão.\nPressione ESPAÇO para verificar a resposta.', 510, 145)
 
   
-    if(keyCode==81)
-    cena = 100
+    if(keyCode==73)
+      cena = 100
+    if(keyCode==80)
+      cena = 99
 
   base();  //CONTROLE, SPRITES, CONDIÇÕES, TIME, GAME OVER
 
