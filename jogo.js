@@ -333,7 +333,7 @@ function keyPressed() {
 }
 function fase1() {
   if (pontos[stage] == undefined)
-    pontos[stage] = 0, player = l[1], caixa = 0, sons[0].stop(), sons[4].setVolume(0.08), sons[4].play(), x1 = undefined, sonsON = undefined
+    pontos[stage] = 0, player = l[1], caixa = 0, sons[0].stop(), sons[4].setVolume(0.08), sons[4].play(), x1 = undefined, sonsON = undefined, questaoatual = 01
   design0() //DESENHOS, DEFINIÇÕES, CONTADORES
   textSize(18)
   text(': O CAMINHÃO DE BILL GATES ESTA VAZIO, ELE PRECISA DE 5 CAIXAS, VOCÊ\nPODE ENCHER O CAMINHÃO PARA ELE?', 170, 34)
@@ -366,7 +366,7 @@ function fase1() {
 }
 function fase2() {
   if (x1 != 1)  //x1 por tela ser para executar um vez, o mesmo para sonsON
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 1, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 1, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 02
   //TELA
   design0()
   text(': SHREK VIROU CAMINHONEIRO ELE PRECISA DE 3+3+3 CAIXAS VOCÊ\nPODE AJUDA-LO?', 170, 34)
@@ -394,7 +394,7 @@ function fase2() {
 }
 function fase3() {
   if (x1 != 2)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 2, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 2, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 03
   design0()
   text(': O BATIMAM COMPROU 12-8+2 CAIXAS COM BAT-EQUIPAMENTOS,\nQUANTAS CAIXAS DEVEM SER COLOCADAS NO CAMINHÃO?', 170, 34)
   textSize(13)
@@ -423,7 +423,7 @@ function fase3() {
 }
 function fase4() {
   if (x1 != 3)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 3, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 3, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 04
   design0()
   text(': UM LOJA DE CAIXAS COMPROU 12+12-12 CAIXAS, QUANTAS CAIXAS\nDEVEM IR NO CAMINHÃO?', 170, 34)
   textSize(13)
@@ -449,7 +449,7 @@ function fase4() {
 }
 function fase5() {
   if (x1 != 4)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 4, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 05
   design0()
   text(': UMA FAMILIA DE ZUMBI COMPROU 9-2-4+7 CAIXAS COM CEREBROS\nEM LATA, QUANTAS CAIXAS DEVEM IR NO CAMINHÃO?', 170, 34)
   textSize(13)
@@ -475,7 +475,7 @@ function fase5() {
 }
 function fase6() {
   if (x1 != 5)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 5, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 5, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 06
   design0()
   text(': A BARBIE COMPROU METADE DE 6 (OU 6/2) CAIXAS DE SAPATOS,\n QUANTAS CAIXAS SÃO?', 170, 34)
   textSize(13)
@@ -503,7 +503,7 @@ function fase6() {
 }
 function fase7() {
   if (x1 != 6)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 6, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 6, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 07
   design0()
   text(': GOHAN COMPROU 8 DIVIDIDO POR 4 (OU 8/4) CAIXAS COM CARNE DE\nDINOSSAURO QUANTAS CAIXAS DE CARNE SÃO?', 170, 34)
   textSize(13)
@@ -530,7 +530,7 @@ function fase7() {
 }
 function fase8() {
   if (x1 != 7)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 7, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 08
   design0()
   text(': UM UPALUPA COMPROU 20/4 CAIXAS DE CHOCOLATE\nQUANTAS CAIXAS SÃO?', 170, 34)
   textSize(13)
@@ -557,7 +557,7 @@ function fase8() {
 }
 function fase9() {
   if (x1 != 8)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 8, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 8, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 09
   design0()
   text(': A GALINHA PINTADINHA COMPROU 30/5 CAIXAS COM MILHO QUANTAS\nCAIXAS SÃO?', 170, 34)
   textSize(13)
@@ -583,7 +583,7 @@ function fase9() {
 }
 function fase10() {
   if (x1 != 9)
-    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 9, player = l[1], caixa = 0, sons[4].setVolume(0.08)
+    XP = 12000, x = 30, y = 450, q1 = 0, sonsON = undefined, x1 = 9, player = l[1], caixa = 0, sons[4].setVolume(0.08), questaoatual = 10
   design0()
   text(': O CHAVEZ ACHOU 20 REAIS E COMPROU 21/3 CAIXAS COM\nSANDUíCHE DE PRESUNTO, QUANTAS CAIXAS SÃO?', 170, 34)
   textSize(13)
@@ -769,28 +769,6 @@ function base() {
     cena = 99
 }
 function design0() {
-  //questaoatual CONTADOR FASE
-  if (cena == 1)
-    questaoatual = 01
-  if (cena == 4)
-    questaoatual = 02
-  if (cena == 5)
-    questaoatual = 03
-  if (cena == 6)
-    questaoatual = 04
-  if (cena == 7)
-    questaoatual = 05
-  if (cena == 8)
-    questaoatual = 06
-  if (cena == 9)
-    questaoatual = 07
-  if (cena == 10)
-    questaoatual = 08
-  if (cena == 11)
-    questaoatual = 09
-  if (cena == 12)
-    questaoatual = 10
-
   background(bg);
   fill('grey');
   stroke('black');
